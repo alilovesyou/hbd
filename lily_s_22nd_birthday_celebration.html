@@ -1,0 +1,2141 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lily Turns 22! • November 7 • Super Purple Stitch Edition</title>
+
+  <!-- Playful, Crisp Typography: Fredoka, Plus Jakarta Sans & Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Fredoka:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FBF9FF',
+            lilac: '#F3EEFF',
+            'lilac-border': '#DCD0FF',
+            plum: '#2A1B4E',
+            stitch: '#7C3AED',
+            'stitch-bright': '#8B5CF6',
+            'stitch-deep': '#5B21B6',
+            'stitch-light': '#DDD6FE',
+            berry: '#EC4899',
+            'berry-soft': '#FCE7F3',
+            gold: '#F59E0B',
+            'gold-soft': '#FEF3C7',
+            mint: '#10B981',
+            'mint-soft': '#D1FAE5',
+            muted: '#5E527A'
+          },
+          fontFamily: {
+            display: ['"Fredoka"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            hand: ['"Caveat"', 'cursive'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: #FBF9FF;
+      color: #2A1B4E;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(circle at 12% 8%, rgba(139, 92, 246, 0.12) 0px, transparent 40%),
+        radial-gradient(circle at 88% 15%, rgba(236, 72, 153, 0.12) 0px, transparent 42%),
+        radial-gradient(circle at 50% 85%, rgba(245, 158, 11, 0.09) 0px, transparent 45%);
+    }
+
+    /* Tactile Nintendo / Sanrio / Pixar Toybox Card Surface */
+    .tactile-card {
+      background: #FFFFFF;
+      border: 2.5px solid #2A1B4E;
+      box-shadow: 0 7px 0 #2A1B4E, 0 18px 36px -10px rgba(42, 27, 78, 0.12);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+    }
+
+    /* Tactile 3D Push Buttons */
+    .tactile-btn {
+      border: 2px solid #2A1B4E;
+      box-shadow: 0 4px 0 #2A1B4E;
+      transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+      user-select: none;
+    }
+    .tactile-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #2A1B4E;
+    }
+    .tactile-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 #2A1B4E;
+    }
+
+    /* Active Superpower Dock Button Glow */
+    .dock-btn-active {
+      background: linear-gradient(135deg, #7C3AED, #EC4899) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 0 #2A1B4E, 0 0 18px rgba(236, 72, 153, 0.55) !important;
+    }
+
+    /* Super 626 Cosmic Aura Pulse around Stitch */
+    @keyframes cosmicAuraPulse {
+      0%, 100% { filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.85)) drop-shadow(0 0 22px rgba(236, 72, 153, 0.6)); }
+      50% { filter: drop-shadow(0 0 18px rgba(245, 158, 11, 0.95)) drop-shadow(0 0 34px rgba(139, 92, 246, 0.9)); }
+    }
+    .super-626-glow {
+      animation: cosmicAuraPulse 1.2s ease-in-out infinite;
+    }
+
+    /* Candle Flame Flicker */
+    @keyframes candleFlicker {
+      0%, 100% { transform: scale(1, 1) rotate(-2deg); }
+      33% { transform: scale(0.91, 1.1) rotate(2deg); }
+      66% { transform: scale(1.06, 0.94) rotate(-1deg); }
+    }
+    .flame-svg {
+      transform-origin: 50% 95%;
+      animation: candleFlicker 1.4s ease-in-out infinite;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+    .flame-blown {
+      opacity: 0 !important;
+      transform: scale(0) translateY(-12px) !important;
+      pointer-events: none;
+    }
+
+    /* Rising Smoke Puff */
+    @keyframes smokeRise {
+      0% { opacity: 0.85; transform: translateY(0) scale(0.6); }
+      100% { opacity: 0; transform: translateY(-30px) scale(1.7); }
+    }
+    .smoke-active {
+      animation: smokeRise 0.85s ease-out forwards;
+    }
+
+    /* Floating Score / Joy Popups */
+    @keyframes floatScorePop {
+      0% { opacity: 1; transform: translate(-50%, 0) scale(0.6); }
+      40% { opacity: 1; transform: translate(-50%, -26px) scale(1.12); }
+      100% { opacity: 0; transform: translate(-50%, -56px) scale(0.95); }
+    }
+    .score-pop {
+      animation: floatScorePop 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Stamp Slam Animation */
+    @keyframes stampSlam {
+      0% { opacity: 0; transform: scale(2.6) rotate(-24deg); }
+      70% { opacity: 1; transform: scale(0.9) rotate(-8deg); }
+      100% { opacity: 1; transform: scale(1) rotate(-10deg); }
+    }
+    .stamp-reveal {
+      animation: stampSlam 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* Hurricane Cyclone Wind Wave */
+    @keyframes cycloneSweep {
+      0% { opacity: 0; transform: translateX(-80px) scaleX(0.3); }
+      25% { opacity: 1; transform: translateX(0px) scaleX(1.05); }
+      100% { opacity: 0; transform: translateX(340px) scaleX(1.35); }
+    }
+    .cyclone-active {
+      animation: cycloneSweep 1.15s ease-out forwards;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #F3EEFF; }
+    ::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 9999px; border: 2px solid #F3EEFF; }
+  </style>
+</head>
+
+<body class="selection:bg-stitch/20 selection:text-plum pb-36">
+
+  <!-- ===================================================================== -->
+  <!-- FULL-VIEWPORT FX CANVAS (JETPACK RIBBONS, PLASMA BEAMS, PAW PRINTS)   -->
+  <!-- ===================================================================== -->
+  <canvas id="stitch-fx-canvas" class="fixed inset-0 pointer-events-none z-40"></canvas>
+
+  <!-- ===================================================================== -->
+  <!-- DROPPED BOBA, CAKE & OHANA SQUAD LAYER (FULL VIEWPORT)                -->
+  <!-- ===================================================================== -->
+  <div id="world-entities-layer" class="fixed inset-0 pointer-events-none z-40 overflow-hidden"></div>
+
+  <!-- ===================================================================== -->
+  <!-- FULL-SCREEN FREE-ROAMING SUPER PURPLE STITCH OVERLAY ACTOR            -->
+  <!-- ===================================================================== -->
+  <div id="stitch-overlay-actor"
+       class="fixed left-0 top-0 z-50 select-none cursor-grab active:cursor-grabbing"
+       style="width: 148px; height: 148px; transform: translate3d(120px, 300px, 0); touch-action: none;">
+
+    <!-- Dynamic Speech Bubble (Stays upright even when Stitch climbs walls!) -->
+    <div id="stitch-speech-bubble"
+         class="pointer-events-none absolute -top-14 left-1/2 -translate-x-1/2 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-plum text-plum font-sans text-xs font-extrabold whitespace-nowrap shadow-[0_4px_0_#2A1B4E] transition-all duration-200 z-20">
+      <span id="stitch-speech-text">Aloha Lily! Happy 22nd Birthday!!</span>
+      <div class="w-2.5 h-2.5 bg-white border-r-2 border-b-2 border-plum rotate-45 absolute -bottom-1.5 left-1/2 -translate-x-1/2"></div>
+    </div>
+
+    <!-- Inner Transform Rig (Handles wall/ceiling rotation, flipX, squash & stretch) -->
+    <div id="stitch-rig" class="w-full h-full relative flex items-center justify-center transition-transform duration-75">
+
+      <!-- HIGH-DETAIL ARTICULATED SUPER PURPLE STITCH SVG -->
+      <svg id="stitch-svg" viewBox="0 0 220 220" class="w-full h-full overflow-visible drop-shadow-md">
+        <defs>
+          <radialGradient id="stitchFurGrad" cx="50%" cy="38%" r="58%">
+            <stop offset="0%" stop-color="#9F7AEA" />
+            <stop offset="65%" stop-color="#7C3AED" />
+            <stop offset="100%" stop-color="#5B21B6" />
+          </radialGradient>
+          <linearGradient id="earInnerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F9A8D4" />
+            <stop offset="100%" stop-color="#DDD6FE" />
+          </linearGradient>
+          <radialGradient id="cosmicAuraGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#EC4899" stop-opacity="0.45" />
+            <stop offset="60%" stop-color="#8B5CF6" stop-opacity="0.25" />
+            <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+
+        <!-- SUPER 626 COSMIC ENERGY HALO (Hidden unless Super 626 Mode is active) -->
+        <g id="stitch-626-halo" class="hidden">
+          <circle cx="110" cy="122" r="82" fill="url(#cosmicAuraGrad)" />
+          <circle cx="110" cy="122" r="72" stroke="#EC4899" stroke-width="2" stroke-dasharray="10 8" fill="none" opacity="0.7" />
+        </g>
+
+        <!-- COSMIC ROCKET JETPACK & THRUSTER FLAMES (Visible during Rocket Zoomies!) -->
+        <g id="stitch-jetpack" class="hidden">
+          <!-- Jetpack Pods behind torso -->
+          <rect x="64" y="112" width="22" height="44" rx="8" fill="#F59E0B" stroke="#2A1B4E" stroke-width="3"/>
+          <rect x="134" y="112" width="22" height="44" rx="8" fill="#F59E0B" stroke="#2A1B4E" stroke-width="3"/>
+          <!-- Thruster Flames -->
+          <path id="jetpack-flame-l" d="M68 156 C66 178, 75 198, 75 204 C75 198, 84 178, 82 156 Z" fill="#EC4899" />
+          <path d="M71 156 C70 170, 75 186, 75 190 C75 186, 80 170, 79 156 Z" fill="#FEF08A" />
+          <path id="jetpack-flame-r" d="M138 156 C136 178, 145 198, 145 204 C145 198, 154 178, 152 156 Z" fill="#EC4899" />
+          <path d="M141 156 C140 170, 145 186, 145 190 C145 186, 150 170, 149 156 Z" fill="#FEF08A" />
+        </g>
+
+        <!-- SUPER 626 DORSAL BACK SPINES (Visible in Super 626 Mode) -->
+        <g id="stitch-626-spines" class="hidden">
+          <path d="M76 62 L62 42 L88 54 Z" fill="#5B21B6" stroke="#2A1B4E" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M144 62 L158 42 L132 54 Z" fill="#5B21B6" stroke="#2A1B4E" stroke-width="2.5" stroke-linejoin="round"/>
+        </g>
+
+        <!-- Ground Shadow -->
+        <ellipse id="stitch-shadow" cx="110" cy="196" rx="44" ry="8" fill="rgba(42, 27, 78, 0.2)" />
+
+        <!-- =============================================================== -->
+        <!-- HUGE EXPRESSIVE NOTCHED EARS (Independent Pivot Groups)         -->
+        <!-- =============================================================== -->
+        <g id="stitch-ear-left" style="transform-origin: 76px 82px;">
+          <path d="M78 86 C44 42, 8 34, 6 66 C5 82, 20 94, 30 97 L22 104 C34 114, 58 112, 76 100 Z"
+                fill="url(#stitchFurGrad)" stroke="#2A1B4E" stroke-width="3.2" stroke-linejoin="round" />
+          <path d="M72 88 C44 54, 16 48, 15 68 C14 80, 26 90, 34 93 L28 99 C39 107, 57 104, 72 96 Z"
+                fill="url(#earInnerGrad)" />
+          <path d="M68 92 C48 79, 30 78, 19 73" stroke="#C084FC" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <g id="stitch-ear-right" style="transform-origin: 144px 82px;">
+          <path d="M142 86 C176 42, 212 34, 214 66 C215 82, 200 94, 190 97 L198 104 C186 114, 162 112, 144 100 Z"
+                fill="url(#stitchFurGrad)" stroke="#2A1B4E" stroke-width="3.2" stroke-linejoin="round" />
+          <path d="M148 88 C176 54, 204 48, 205 68 C206 80, 194 90, 186 93 L192 99 C181 107, 163 104, 148 96 Z"
+                fill="url(#earInnerGrad)" />
+          <path d="M152 92 C172 79, 190 78, 201 73" stroke="#C084FC" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <!-- =============================================================== -->
+        <!-- SUPER 626 EXTRA MIDDLE ARMS (4 ARMS TOTAL IN SUPER MODE!)       -->
+        <!-- =============================================================== -->
+        <g id="stitch-626-extra-arms" class="hidden">
+          <!-- Extra Left Middle Arm + Claws -->
+          <g id="stitch-arm-mid-left" style="transform-origin: 72px 152px;">
+            <path d="M74 146 C46 144, 30 156, 36 168 C42 176, 62 168, 76 160 Z"
+                  fill="#6D28D9" stroke="#2A1B4E" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="34" cy="160" r="3" fill="#2A1B4E"/>
+            <circle cx="35" cy="167" r="3" fill="#2A1B4E"/>
+            <circle cx="40" cy="172" r="3" fill="#2A1B4E"/>
+          </g>
+          <!-- Extra Right Middle Arm + Claws -->
+          <g id="stitch-arm-mid-right" style="transform-origin: 148px 152px;">
+            <path d="M146 146 C174 144, 190 156, 184 168 C178 176, 158 168, 144 160 Z"
+                  fill="#6D28D9" stroke="#2A1B4E" stroke-width="3" stroke-linejoin="round"/>
+            <circle cx="186" cy="160" r="3" fill="#2A1B4E"/>
+            <circle cx="185" cy="167" r="3" fill="#2A1B4E"/>
+            <circle cx="180" cy="172" r="3" fill="#2A1B4E"/>
+          </g>
+        </g>
+
+        <!-- =============================================================== -->
+        <!-- STITCH TORSO, PLUMP BELLY & ARTICULATED LEGS                    -->
+        <!-- =============================================================== -->
+        <g id="stitch-torso">
+          <path d="M72 122 C60 144, 62 180, 84 188 L136 188 C158 180, 160 144, 148 122 Z"
+                fill="url(#stitchFurGrad)" stroke="#2A1B4E" stroke-width="3.2" stroke-linejoin="round" />
+          <!-- Soft Lavender Belly Patch -->
+          <ellipse cx="110" cy="158" rx="28" ry="26" fill="#EDE9FE" />
+          <!-- Cute Tuft on Chest -->
+          <path d="M103 136 Q110 142 117 136" stroke="#C4B5FD" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+          <!-- Left Foot (Swings when running or dangling) -->
+          <g id="stitch-leg-left" style="transform-origin: 82px 180px;">
+            <ellipse cx="78" cy="186" rx="17" ry="11.5" transform="rotate(-12 78 186)" fill="#7C3AED" stroke="#2A1B4E" stroke-width="3"/>
+            <ellipse cx="76" cy="187" rx="8.5" ry="6" transform="rotate(-12 76 187)" fill="#DDD6FE"/>
+            <circle cx="64" cy="181" r="2.8" fill="#2A1B4E"/>
+            <circle cx="70" cy="176" r="2.8" fill="#2A1B4E"/>
+            <circle cx="77" cy="175" r="2.8" fill="#2A1B4E"/>
+          </g>
+
+          <!-- Right Foot -->
+          <g id="stitch-leg-right" style="transform-origin: 138px 180px;">
+            <ellipse cx="142" cy="186" rx="17" ry="11.5" transform="rotate(12 142 186)" fill="#7C3AED" stroke="#2A1B4E" stroke-width="3"/>
+            <ellipse cx="144" cy="187" rx="8.5" ry="6" transform="rotate(12 144 187)" fill="#DDD6FE"/>
+            <circle cx="156" cy="181" r="2.8" fill="#2A1B4E"/>
+            <circle cx="150" cy="176" r="2.8" fill="#2A1B4E"/>
+            <circle cx="143" cy="175" r="2.8" fill="#2A1B4E"/>
+          </g>
+        </g>
+
+        <!-- =============================================================== -->
+        <!-- STITCH HEAD, EXPRESSIVE EYES, NOSE & DYNAMIC MOUTHS             -->
+        <!-- =============================================================== -->
+        <g id="stitch-head">
+          <!-- SUPER 626 TWIN ALIEN ANTENNAE (Visible in Super 626 Mode) -->
+          <g id="stitch-626-antennae" class="hidden">
+            <path d="M96 62 C88 38, 72 28, 66 32" stroke="#7C3AED" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M96 62 C88 38, 72 28, 66 32" stroke="#2A1B4E" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="65" cy="32" r="6.5" fill="#EC4899" stroke="#2A1B4E" stroke-width="2.5"/>
+            <path d="M124 62 C132 38, 148 28, 154 32" stroke="#7C3AED" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M124 62 C132 38, 148 28, 154 32" stroke="#2A1B4E" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <circle cx="155" cy="32" r="6.5" fill="#EC4899" stroke="#2A1B4E" stroke-width="2.5"/>
+          </g>
+
+          <!-- Main Head Shape -->
+          <path d="M58 92 C56 54, 164 54, 162 92 C166 122, 146 136, 110 136 C74 136, 54 122, 58 92 Z"
+                fill="url(#stitchFurGrad)" stroke="#2A1B4E" stroke-width="3.2" />
+
+          <!-- Forehead Fur Tuft -->
+          <path d="M101 62 Q106 50 110 58 Q116 48 119 62" fill="#8B5CF6" stroke="#2A1B4E" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <!-- Signature Stitch Lilac Tear-Drop Eye Patches -->
+          <ellipse cx="83" cy="94" rx="19" ry="21" transform="rotate(-14 83 94)" fill="#DDD6FE" />
+          <ellipse cx="137" cy="94" rx="19" ry="21" transform="rotate(14 137 94)" fill="#DDD6FE" />
+
+          <!-- Expressive Brow Ridge -->
+          <path d="M99 75 Q110 71 121 75" stroke="#5B21B6" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+
+          <!-- OPEN GLOSSY EYES (Track Cursor) -->
+          <g id="stitch-eyes-open">
+            <ellipse cx="84" cy="94" rx="13.5" ry="16" transform="rotate(-10 84 94)" fill="#1E1338" />
+            <ellipse cx="136" cy="94" rx="13.5" ry="16" transform="rotate(10 136 94)" fill="#1E1338" />
+            <!-- Specular Starlight Highlights -->
+            <g id="stitch-eye-pupils">
+              <circle cx="87" cy="88" r="5.2" fill="#FFFFFF" />
+              <circle cx="80" cy="99" r="2.4" fill="#FFFFFF" />
+              <circle cx="133" cy="88" r="5.2" fill="#FFFFFF" />
+              <circle cx="140" cy="99" r="2.4" fill="#FFFFFF" />
+            </g>
+          </g>
+
+          <!-- HAPPY ARC EYES -->
+          <g id="stitch-eyes-happy" class="hidden">
+            <path d="M71 95 Q84 79 97 95" stroke="#1E1338" stroke-width="4.5" fill="none" stroke-linecap="round" />
+            <path d="M123 95 Q136 79 149 95" stroke="#1E1338" stroke-width="4.5" fill="none" stroke-linecap="round" />
+          </g>
+
+          <!-- Rosy Berry Cheeks -->
+          <ellipse cx="65" cy="110" rx="7.5" ry="4.5" fill="#EC4899" opacity="0.55" />
+          <ellipse cx="155" cy="110" rx="7.5" ry="4.5" fill="#EC4899" opacity="0.55" />
+
+          <!-- Big Iconic Stitch Nose -->
+          <path d="M97 94 C97 85, 123 85, 123 94 C123 104, 114 110, 110 110 C106 110, 97 104, 97 94 Z"
+                fill="#3B0764" stroke="#1E1338" stroke-width="2.5" />
+          <ellipse cx="106" cy="90" rx="5" ry="2.2" fill="#C084FC" opacity="0.7" />
+
+          <!-- MOUTH 1: Classic Wide Stitch Smile -->
+          <g id="stitch-mouth-smile">
+            <path d="M78 115 Q110 128 142 115" stroke="#2A1B4E" stroke-width="3.2" fill="none" stroke-linecap="round" />
+            <path d="M75 112 Q78 117 82 118" stroke="#2A1B4E" stroke-width="2.6" fill="none" stroke-linecap="round" />
+            <path d="M145 112 Q142 117 138 118" stroke="#2A1B4E" stroke-width="2.6" fill="none" stroke-linecap="round" />
+          </g>
+
+          <!-- MOUTH 2: Big Excited Laugh / Munch / Roar -->
+          <g id="stitch-mouth-open" class="hidden">
+            <path d="M82 113 Q110 119 138 113 C136 133, 84 133, 82 113 Z" fill="#831843" stroke="#2A1B4E" stroke-width="2.8" />
+            <path d="M92 123 Q110 117 128 123 C124 131, 96 131, 92 123 Z" fill="#F472B6" />
+            <polygon points="88,114 92,120 96,114" fill="#FFFFFF" />
+            <polygon points="124,114 128,120 132,114" fill="#FFFFFF" />
+          </g>
+
+          <!-- MOUTH 3: Giant Hurricane Puffed Cheeks -->
+          <g id="stitch-mouth-puff" class="hidden">
+            <circle cx="79" cy="116" r="13" fill="#A78BFA" stroke="#2A1B4E" stroke-width="2.8"/>
+            <circle cx="141" cy="116" r="13" fill="#A78BFA" stroke="#2A1B4E" stroke-width="2.8"/>
+            <circle cx="110" cy="117" r="5" fill="#2A1B4E"/>
+          </g>
+
+          <!-- GOLDEN "22" BIRTHDAY CROWN -->
+          <g transform="translate(88, 30) rotate(-4 22 20)">
+            <polygon points="4,30 8,8 18,19 25,4 32,19 42,8 46,30" fill="#F59E0B" stroke="#2A1B4E" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="8" cy="7" r="3" fill="#EC4899"/>
+            <circle cx="25" cy="3" r="3.5" fill="#7C3AED"/>
+            <circle cx="42" cy="7" r="3" fill="#EC4899"/>
+            <text x="25" y="26" text-anchor="middle" font-family="Fredoka, sans-serif" font-weight="700" font-size="11" fill="#2A1B4E">22</text>
+          </g>
+        </g>
+
+        <!-- =============================================================== -->
+        <!-- PRIMARY ARMS & HAWAIIAN UKULELE PROP                            -->
+        <!-- =============================================================== -->
+        <g id="stitch-arm-left" style="transform-origin: 74px 136px;">
+          <ellipse cx="68" cy="138" rx="14" ry="9.5" transform="rotate(24 68 138)" fill="#7C3AED" stroke="#2A1B4E" stroke-width="3" />
+          <circle cx="56" cy="141" r="2.5" fill="#2A1B4E"/>
+          <circle cx="59" cy="146" r="2.5" fill="#2A1B4E"/>
+        </g>
+        <g id="stitch-arm-right" style="transform-origin: 146px 136px;">
+          <ellipse cx="152" cy="138" rx="14" ry="9.5" transform="rotate(-24 152 138)" fill="#7C3AED" stroke="#2A1B4E" stroke-width="3" />
+          <circle cx="164" cy="141" r="2.5" fill="#2A1B4E"/>
+          <circle cx="161" cy="146" r="2.5" fill="#2A1B4E"/>
+        </g>
+
+        <!-- Ukulele Prop -->
+        <g id="stitch-ukulele-prop" class="hidden" transform="translate(62, 122) rotate(-14)">
+          <path d="M22 10 C12 10, 8 24, 18 30 C10 36, 14 50, 28 50 C42 50, 46 36, 38 30 C48 24, 44 10, 34 10 Z"
+                fill="#F59E0B" stroke="#2A1B4E" stroke-width="2.6"/>
+          <circle cx="28" cy="32" r="6.5" fill="#2A1B4E" />
+          <rect x="42" y="26" width="36" height="7.5" rx="2.5" fill="#92400E" stroke="#2A1B4E" stroke-width="2.4"/>
+          <line x1="20" y1="29" x2="74" y2="29" stroke="#FEF3C7" stroke-width="1.2"/>
+          <line x1="20" y1="32" x2="74" y2="32" stroke="#FEF3C7" stroke-width="1.2"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+
+  <!-- ===================================================================== -->
+  <!-- TOP STICKY NAVIGATION & STITCH RADAR BAR                              -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-30 bg-cream/90 backdrop-blur-md border-b-2 border-plum">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-2">
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-stitch text-white border-2 border-plum shadow-[0_3px_0_#2A1B4E] flex items-center justify-center font-display font-bold text-lg group-hover:rotate-6 transition-transform">
+          22
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg text-plum block leading-none">Lily&rsquo;s 22nd</span>
+          <span class="font-sans text-[11px] font-extrabold text-stitch tracking-wider uppercase">November 7 &bull; Stitch World</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1.5 bg-lilac p-1.5 rounded-full border-2 border-plum">
+        <a href="#hero" class="px-3.5 py-1 rounded-full text-xs font-extrabold text-plum hover:bg-white transition-all">Hero</a>
+        <a href="#cake-section" class="px-3.5 py-1 rounded-full text-xs font-extrabold text-plum hover:bg-white transition-all">22 Candles</a>
+        <a href="#reasons-section" class="px-3.5 py-1 rounded-full text-xs font-extrabold text-plum hover:bg-white transition-all">22 Reasons</a>
+        <a href="#postcard-section" class="px-3.5 py-1 rounded-full text-xs font-extrabold text-plum hover:bg-white transition-all">Postcard &amp; Capsule</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <div class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gold-soft border-2 border-plum text-xs font-extrabold text-plum">
+          <span>Joy Score:</span>
+          <span id="joy-score-counter" class="text-stitch font-display text-sm">220</span>
+        </div>
+
+        <button id="sound-toggle-btn" class="tactile-btn px-3.5 py-1.5 rounded-full bg-white text-xs font-extrabold text-plum flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-stitch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span id="sound-label">SFX: ON</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ===================================================================== -->
+  <!-- MAIN PAGE CONTENT                                                     -->
+  <!-- ===================================================================== -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 space-y-20 sm:space-y-28 relative z-10">
+
+    <!-- =================================================================== -->
+    <!-- SECTION 1: HERO BANNER & SUPER-STITCH COMMAND CENTER                -->
+    <!-- =================================================================== -->
+    <section id="hero" class="text-center space-y-7 pt-2">
+
+      <!-- Tactile Birthday Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-soft border-2 border-plum shadow-[0_3px_0_#2A1B4E] text-plum text-xs font-extrabold uppercase tracking-wider">
+        <span class="w-2.5 h-2.5 rounded-full bg-berry animate-ping"></span>
+        <span>November 7 &bull; Chapter 22 Unlocked!</span>
+      </div>
+
+      <!-- Crisp Celebration Headline -->
+      <div class="space-y-3 max-w-3xl mx-auto">
+        <h1 class="font-display text-5xl sm:text-7xl font-bold text-plum tracking-tight leading-[1.05]">
+          Happy 22nd Birthday, <span class="text-stitch underline decoration-berry decoration-wavy decoration-4 underline-offset-8">Lily!</span>
+        </h1>
+        <p class="font-sans text-base sm:text-lg text-muted font-semibold max-w-2xl mx-auto pt-2">
+          Watch out—<strong class="text-stitch">Super Purple Stitch</strong> is loose on your screen! She can climb the walls of your browser, jump on top of these cards, transform into 6-armed Cosmic Mode, and help you celebrate turning 22!
+        </p>
+      </div>
+
+      <!-- Interactive Hero Command Card (Stitch Can Land On Top of This Card!) -->
+      <div id="hero-landing-card" class="tactile-card rounded-[2.2rem] p-6 sm:p-9 bg-gradient-to-b from-white via-lilac/50 to-lilac relative overflow-hidden">
+        
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-5 border-b-2 border-dashed border-lilac-border">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-mint border border-plum"></span>
+            <span class="font-sans text-xs sm:text-sm font-extrabold text-plum">
+              Stitch Radar: <span id="stitch-state-readout" class="text-stitch">Free-Roaming Your Screen!</span>
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="px-3 py-1 rounded-full bg-berry-soft border border-plum text-berry font-sans text-xs font-extrabold">
+              Treats Munched: <span id="treats-eaten-badge">0</span>
+            </span>
+            <span class="px-3 py-1 rounded-full bg-white border border-plum text-plum font-sans text-xs font-extrabold">
+              Tip: Drag &amp; Toss Stitch or Double-Click Anywhere!
+            </span>
+          </div>
+        </div>
+
+        <!-- Live Precision Timer Since Nov 7, 2004 -->
+        <div class="py-6">
+          <p class="font-sans text-xs font-extrabold uppercase tracking-widest text-muted mb-3">
+            Time Lily Has Been Making The World Brighter (Since Nov 7, 2004)
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto">
+            <div class="bg-white rounded-2xl p-3.5 border-2 border-plum shadow-[0_4px_0_#2A1B4E]">
+              <span id="live-days" class="font-display text-2xl sm:text-3xl font-bold text-stitch block">8,035</span>
+              <span class="font-sans text-[11px] font-extrabold text-muted uppercase">Days of Sunshine</span>
+            </div>
+            <div class="bg-white rounded-2xl p-3.5 border-2 border-plum shadow-[0_4px_0_#2A1B4E]">
+              <span id="live-hours" class="font-display text-2xl sm:text-3xl font-bold text-berry block">192,840</span>
+              <span class="font-sans text-[11px] font-extrabold text-muted uppercase">Hours of Smiles</span>
+            </div>
+            <div class="bg-white rounded-2xl p-3.5 border-2 border-plum shadow-[0_4px_0_#2A1B4E]">
+              <span id="live-mins" class="font-display text-2xl sm:text-3xl font-bold text-gold block">00</span>
+              <span class="font-sans text-[11px] font-extrabold text-muted uppercase">Minutes Today</span>
+            </div>
+            <div class="bg-white rounded-2xl p-3.5 border-2 border-plum shadow-[0_4px_0_#2A1B4E]">
+              <span id="live-secs" class="font-display text-2xl sm:text-3xl font-bold text-mint block">00</span>
+              <span class="font-sans text-[11px] font-extrabold text-muted uppercase">Seconds &amp; Counting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Quick-Action Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+          <button id="btn-whistle-stitch" class="tactile-btn px-5 py-3 rounded-2xl bg-stitch text-white font-sans text-xs sm:text-sm font-extrabold flex items-center gap-2">
+            <span>📣 Whistle for Stitch! (Call Her Here)</span>
+          </button>
+
+          <button id="btn-hero-plasma" class="tactile-btn px-5 py-3 rounded-2xl bg-berry text-white font-sans text-xs sm:text-sm font-extrabold flex items-center gap-2">
+            <span>💖 Fire 22nd Birthday Heart-Laser!</span>
+          </button>
+
+          <button id="btn-hero-rain-treats" class="tactile-btn px-5 py-3 rounded-2xl bg-gold text-plum font-sans text-xs sm:text-sm font-extrabold flex items-center gap-2">
+            <span>🧋 Rain Boba &amp; Cake Across Screen!</span>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =================================================================== -->
+    <!-- SECTION 2: THE 22-CANDLE CAKE + STITCH'S COSMIC HURRICANE BREATH    -->
+    <!-- =================================================================== -->
+    <section id="cake-section" class="scroll-mt-20">
+      <div id="cake-landing-card" class="tactile-card rounded-[2.5rem] p-6 sm:p-12 text-center relative overflow-hidden">
+        
+        <div class="max-w-xl mx-auto space-y-2 mb-6">
+          <span class="inline-block px-3.5 py-1 rounded-full bg-berry-soft border-2 border-plum text-berry font-sans text-xs font-extrabold uppercase tracking-wider">
+            Make Your 22nd Birthday Wish
+          </span>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-plum">
+            22 Candles for Lily
+          </h2>
+          <p class="font-sans text-sm sm:text-base text-muted font-semibold">
+            Swipe across the flames, blow into your microphone, or summon <strong class="text-stitch">Super Stitch</strong> right to this card to unleash her Cosmic Hurricane Breath!
+          </p>
+        </div>
+
+        <!-- Action Controls for the Cake -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <div class="px-4 py-2.5 rounded-2xl bg-lilac border-2 border-plum font-sans text-xs font-extrabold text-plum flex items-center gap-2">
+            <span id="candle-dot" class="w-2.5 h-2.5 rounded-full bg-gold animate-ping"></span>
+            <span id="candles-remaining-label">22 of 22 Candles Lit</span>
+          </div>
+
+          <button id="stitch-hurricane-btn" class="tactile-btn px-5 py-2.5 rounded-2xl bg-stitch text-white font-sans text-xs sm:text-sm font-extrabold flex items-center gap-2">
+            <span>💨 Unleash Stitch&rsquo;s Cosmic Hurricane Breath!</span>
+          </button>
+
+          <button id="mic-blow-btn" class="tactile-btn px-4 py-2.5 rounded-2xl bg-white text-plum font-sans text-xs sm:text-sm font-extrabold flex items-center gap-2">
+            <span id="mic-blow-label">🎤 Blow Into Mic</span>
+          </button>
+
+          <button id="relight-candles-btn" class="hidden tactile-btn px-4 py-2.5 rounded-2xl bg-gold text-plum font-sans text-xs sm:text-sm font-extrabold">
+            ✨ Relight All 22 Candles
+          </button>
+        </div>
+
+        <!-- 3-Tier Illustrated Cake Stage -->
+        <div id="cake-stage-box" class="relative max-w-2xl mx-auto pt-4 pb-2 select-none">
+          
+          <!-- Animated Cyclone Wind Gust Overlay -->
+          <div id="stitch-cyclone-gust" class="hidden pointer-events-none absolute inset-y-0 left-0 right-0 z-30 flex items-center justify-center">
+            <svg class="w-full h-44" viewBox="0 0 520 160" fill="none">
+              <path d="M10 40 Q180 5 340 40 T500 30" stroke="#7C3AED" stroke-width="7" stroke-linecap="round" stroke-dasharray="18 10"/>
+              <path d="M25 80 Q210 50 380 80 T510 72" stroke="#EC4899" stroke-width="6" stroke-linecap="round"/>
+              <path d="M5 120 Q190 95 360 120 T490 110" stroke="#F59E0B" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+          </div>
+
+          <!-- TIER 1 (TOP: 6 Candles) -->
+          <div class="flex flex-col items-center">
+            <div id="cake-tier-1" class="flex items-end justify-center gap-3 sm:gap-5 px-4 -mb-1 z-10"></div>
+            <div class="w-48 sm:w-64 h-16 bg-[#FFF5F9] rounded-t-2xl border-2 border-plum relative overflow-hidden flex items-center justify-center shadow-sm">
+              <svg class="absolute top-0 inset-x-0 w-full h-5 text-berry" preserveAspectRatio="none" viewBox="0 0 200 24" fill="currentColor">
+                <path d="M0 0 H200 V10 Q183 24 166 10 Q150 24 133 10 Q116 24 100 10 Q83 24 66 10 Q50 24 33 10 Q16 24 0 10 Z" />
+              </svg>
+              <span class="font-hand text-2xl sm:text-3xl font-bold text-plum mt-2">Lily &bull; 22</span>
+            </div>
+          </div>
+
+          <!-- TIER 2 (MIDDLE: 8 Candles) -->
+          <div class="flex flex-col items-center">
+            <div id="cake-tier-2" class="flex items-end justify-center gap-2.5 sm:gap-5 px-4 -mt-3 -mb-1 z-10"></div>
+            <div class="w-64 sm:w-96 h-20 bg-[#EDE4FF] rounded-t-2xl border-x-2 border-t-2 border-plum relative overflow-hidden flex items-center justify-around px-6 shadow-sm">
+              <svg class="absolute top-0 inset-x-0 w-full h-5 text-stitch" preserveAspectRatio="none" viewBox="0 0 300 24" fill="currentColor">
+                <path d="M0 0 H300 V10 Q275 24 250 10 Q225 24 200 10 Q175 24 150 10 Q125 24 100 10 Q75 24 50 10 Q25 24 0 10 Z" />
+              </svg>
+              <span class="w-3.5 h-3.5 rounded-full bg-berry border border-plum mt-2"></span>
+              <span class="font-display text-xs sm:text-sm font-bold uppercase tracking-widest text-plum mt-2">November 7</span>
+              <span class="w-3.5 h-3.5 rounded-full bg-berry border border-plum mt-2"></span>
+            </div>
+          </div>
+
+          <!-- TIER 3 (BOTTOM: 8 Candles) -->
+          <div class="flex flex-col items-center">
+            <div id="cake-tier-3" class="flex items-end justify-center gap-3 sm:gap-6 px-4 -mt-3 -mb-1 z-10"></div>
+            <div class="w-80 sm:w-[28rem] h-24 bg-[#FFF5F9] rounded-t-2xl border-2 border-plum relative overflow-hidden flex items-center justify-between px-8 shadow-sm">
+              <svg class="absolute top-0 inset-x-0 w-full h-6 text-lilac-border" preserveAspectRatio="none" viewBox="0 0 400 24" fill="currentColor">
+                <path d="M0 0 H400 V10 Q375 24 350 10 Q325 24 300 10 Q275 24 250 10 Q225 24 200 10 Q175 24 150 10 Q125 24 100 10 Q75 24 50 10 Q25 24 0 10 Z" />
+              </svg>
+              <span class="w-4 h-4 rounded-full bg-gold border-2 border-plum mt-3"></span>
+              <span class="font-hand text-2xl sm:text-3xl font-bold text-stitch mt-3">Make Your Birthday Wish!</span>
+              <span class="w-4 h-4 rounded-full bg-gold border-2 border-plum mt-3"></span>
+            </div>
+            <!-- Cake Platter -->
+            <div class="w-80 sm:w-[31rem] h-4 bg-stitch rounded-full border-2 border-plum"></div>
+            <div class="w-32 sm:w-44 h-5 bg-gold rounded-b-2xl border-x-2 border-b-2 border-plum"></div>
+          </div>
+        </div>
+
+        <!-- WISH REVEAL BANNER -->
+        <div id="cake-wish-banner" class="hidden mt-8 max-w-xl mx-auto p-6 sm:p-8 rounded-3xl bg-gold-soft border-2 border-plum shadow-[0_6px_0_#2A1B4E] text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white border-2 border-plum text-stitch font-sans text-xs font-extrabold uppercase">
+            <span>🎉 All 22 Candles Extinguished!</span>
+          </div>
+          <h3 class="font-display text-3xl sm:text-4xl font-bold text-plum">
+            Wish Locked Into The Galaxy, Lily!
+          </h3>
+          <p class="font-sans text-sm sm:text-base text-plum/90 font-semibold leading-relaxed">
+            Super Stitch blasted your 22nd birthday wish straight to the brightest stars! May this year bring you nonstop joy, big adventures, peaceful mornings, and every dream in your heart.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- =================================================================== -->
+    <!-- SECTION 3: "22 REASONS LILY IS THE BEST" + LIVE STITCH COMMENTARY   -->
+    <!-- =================================================================== -->
+    <section id="reasons-section" class="scroll-mt-20 space-y-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span class="font-sans text-xs font-extrabold uppercase tracking-wider text-stitch">22 Notes for 22 Years &bull; Stitch Reacts Live!</span>
+          <h2 class="font-display text-3xl sm:text-5xl font-bold text-plum mt-1">
+            22 Reasons Lily is the Best
+          </h2>
+        </div>
+
+        <!-- View Mode Toggle -->
+        <div class="flex items-center gap-2 self-start sm:self-auto bg-lilac p-1.5 rounded-2xl border-2 border-plum">
+          <button id="view-stack-btn" class="px-4 py-2 rounded-xl bg-stitch text-white font-sans text-xs font-extrabold transition-all">
+            Interactive Deck
+          </button>
+          <button id="view-grid-btn" class="px-4 py-2 rounded-xl text-plum hover:bg-white font-sans text-xs font-extrabold transition-all">
+            View All 22 Grid
+          </button>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE SINGLE CAPSULE CARD STACK -->
+      <div id="reasons-stack-container" class="max-w-2xl mx-auto space-y-6">
+        
+        <div id="active-reason-card" class="tactile-card rounded-[2.2rem] p-7 sm:p-11 text-center space-y-6 relative">
+          
+          <div class="flex items-center justify-between">
+            <span id="reason-num-pill" class="px-4 py-1.5 rounded-full bg-lilac border-2 border-plum text-stitch font-sans text-xs font-extrabold uppercase tracking-wider">
+              Reason #01 of 22
+            </span>
+            <span class="font-hand text-2xl text-berry font-bold">Approved by Stitch 🐾</span>
+          </div>
+
+          <div class="py-4 space-y-3">
+            <h3 id="reason-card-title" class="font-display text-2xl sm:text-4xl font-bold text-plum leading-snug">
+              Your laugh makes the whole room lighter
+            </h3>
+            <p id="reason-card-desc" class="font-sans text-base sm:text-lg text-muted font-semibold leading-relaxed max-w-lg mx-auto">
+              The second you start laughing, everyone around you forgets what they were worried about. It is genuinely the best sound in the world.
+            </p>
+          </div>
+
+          <!-- Tactile Card Controls -->
+          <div class="pt-4 border-t-2 border-dashed border-lilac-border flex flex-wrap items-center justify-between gap-3">
+            <button id="reason-prev-btn" class="tactile-btn px-5 py-2.5 rounded-xl bg-lilac text-plum font-sans text-xs font-extrabold flex items-center gap-2">
+              <span>&larr; Prev</span>
+            </button>
+
+            <button id="reason-random-btn" class="tactile-btn px-4 py-2.5 rounded-xl bg-berry-soft text-berry font-sans text-xs font-extrabold">
+              ✨ Shuffle + Stitch Reaction
+            </button>
+
+            <button id="reason-next-btn" class="tactile-btn px-6 py-2.5 rounded-xl bg-stitch text-white font-sans text-xs font-extrabold flex items-center gap-2">
+              <span>Next Reason &rarr;</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Numbered Quick-Jump Dots (1-22) -->
+        <div id="reason-dots-wrap" class="flex flex-wrap items-center justify-center gap-1.5"></div>
+      </div>
+
+      <!-- ALL 22 GRID VIEW -->
+      <div id="reasons-grid-container" class="hidden grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+
+    </section>
+
+
+    <!-- =================================================================== -->
+    <!-- SECTION 4: NOVEMBER 7 POSTCARD, ROYAL PAW STAMP & FORTUNE CAPSULE   -->
+    <!-- =================================================================== -->
+    <section id="postcard-section" class="scroll-mt-20 space-y-8">
+
+      <!-- Birthday Postcard + Stitch Royal Paw Stamp -->
+      <div id="postcard-landing-card" class="tactile-card rounded-[2.5rem] p-7 sm:p-12 relative overflow-hidden bg-white">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left: Heartfelt Birthday Letter -->
+          <div class="lg:col-span-8 space-y-5 lg:pr-8 lg:border-r-2 lg:border-dashed lg:border-plum/30">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-full bg-lilac border-2 border-plum text-stitch font-sans text-xs font-extrabold uppercase">
+                Official Birthday Postcard &bull; 07.11
+              </span>
+            </div>
+
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-plum">
+              Dear Lily, Happy 22nd Birthday!
+            </h2>
+
+            <div class="font-sans text-base sm:text-lg text-plum/90 space-y-4 leading-relaxed font-medium">
+              <p>
+                Today you turn <strong class="text-stitch">22</strong>, and honestly, the world is so much brighter, funnier, and warmer because you are in it.
+              </p>
+              <p>
+                You have this rare, effortless way of making ordinary days feel like something worth remembering. Whether it is your quick humor, the genuine care you show to the people you love, or just the unmistakable energy you bring into a room—being around you makes life happier.
+              </p>
+              <p>
+                I hope this page—and your chaotic little <strong class="text-stitch">Super Purple Stitch</strong> running all over your screen—puts the biggest smile on your face today. May your 22nd year be filled with unforgettable adventures, zero stress, loud laughs, and everything you have been wishing for.
+              </p>
+            </div>
+
+            <div class="pt-2">
+              <p class="font-hand text-3xl text-berry font-bold">
+                Happy 22nd Birthday, Lily! You&rsquo;re one of a kind!
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Interactive Postcard Stamp Zone -->
+          <div class="lg:col-span-4 flex flex-col items-center justify-center text-center space-y-5 p-6 rounded-3xl bg-lilac border-2 border-plum relative">
+            
+            <div class="w-20 h-24 rounded-xl bg-white border-2 border-dashed border-plum p-2 flex flex-col items-center justify-center shadow-sm">
+              <span class="font-sans text-[10px] font-extrabold text-muted uppercase">GALAXY MAIL</span>
+              <span class="font-display text-2xl font-bold text-stitch">22</span>
+              <span class="font-sans text-[10px] font-extrabold text-berry">NOV 7</span>
+            </div>
+
+            <!-- Dynamic Stitch Paw Print Stamp Area -->
+            <div id="paw-stamp-box" class="w-40 h-40 rounded-full border-2 border-dashed border-plum/50 flex items-center justify-center relative bg-white">
+              <span id="stamp-placeholder-text" class="font-sans text-xs font-extrabold text-muted px-4">
+                Click below to summon Stitch to jump here &amp; stamp this postcard!
+              </span>
+
+              <!-- Hidden SVG Purple Paw Stamp -->
+              <div id="stitch-paw-stamp" class="hidden absolute inset-0 flex items-center justify-center">
+                <svg class="w-36 h-36 text-stitch" viewBox="0 0 140 140" fill="none">
+                  <circle cx="70" cy="70" r="62" stroke="currentColor" stroke-width="4" stroke-dasharray="8 5"/>
+                  <circle cx="70" cy="70" r="54" stroke="#EC4899" stroke-width="2.5"/>
+                  <ellipse cx="70" cy="78" rx="20" ry="16" fill="currentColor"/>
+                  <ellipse cx="45" cy="54" rx="7" ry="10" transform="rotate(-25 45 54)" fill="currentColor"/>
+                  <ellipse cx="61" cy="46" rx="7" ry="11" transform="rotate(-8 61 46)" fill="currentColor"/>
+                  <ellipse cx="79" cy="46" rx="7" ry="11" transform="rotate(8 79 46)" fill="currentColor"/>
+                  <ellipse cx="95" cy="54" rx="7" ry="10" transform="rotate(25 95 54)" fill="currentColor"/>
+                  <text x="70" y="114" text-anchor="middle" font-family="Plus Jakarta Sans" font-weight="800" font-size="9" fill="#2A1B4E" letter-spacing="0.8">OHANA APPROVED • 22</text>
+                </svg>
+              </div>
+            </div>
+
+            <button id="stamp-postcard-btn" class="tactile-btn w-full py-3 px-5 rounded-2xl bg-stitch text-white font-sans text-xs font-extrabold uppercase tracking-wider">
+              🐾 Summon Stitch to Stamp!
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Lucky 22nd Year Fortune Capsule Dispenser -->
+      <div class="tactile-card rounded-[2.2rem] p-6 sm:p-9 bg-gradient-to-r from-lilac via-white to-berry-soft/60 text-center space-y-5">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-gold-soft border-2 border-plum text-plum font-sans text-xs font-extrabold uppercase">
+          Stitch&rsquo;s Chapter 22 Gachapon
+        </span>
+        <h3 class="font-display text-2xl sm:text-4xl font-bold text-plum">
+          Pull a Lucky 22nd Year Fortune Capsule!
+        </h3>
+        <p id="fortune-output-text" class="font-sans text-base sm:text-xl font-bold text-stitch max-w-xl mx-auto min-h-[3.5rem] flex items-center justify-center bg-white px-6 py-4 rounded-2xl border-2 border-plum shadow-[0_4px_0_#2A1B4E]">
+          Tap the button below to pop open a lucky prophecy for your 22nd year!
+        </p>
+        <div>
+          <button id="btn-pull-fortune" class="tactile-btn px-6 py-3 rounded-2xl bg-gold text-plum font-sans text-xs sm:text-sm font-extrabold">
+            🔮 Pop Open a 22nd Birthday Capsule!
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- ===================================================================== -->
+  <!-- PERSISTENT FLOATING "STITCH SUPERPOWER DOCK" (BOTTOM VIEWPORT)        -->
+  <!-- ===================================================================== -->
+  <div class="fixed bottom-3 inset-x-0 z-50 flex justify-center px-2 sm:px-4 pointer-events-none">
+    <div class="pointer-events-auto bg-white/95 backdrop-blur-md border-2 border-plum rounded-3xl px-2.5 sm:px-4 py-2 shadow-[0_8px_0_#2A1B4E] flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full">
+      
+      <button id="dock-super-626" class="tactile-btn px-3 py-2 rounded-2xl bg-lilac text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span>⚡ Super 626 Mode</span>
+      </button>
+
+      <button id="dock-rocket-zoomies" class="tactile-btn px-3 py-2 rounded-2xl bg-berry-soft text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span>🚀 Rocket Zoomies</span>
+      </button>
+
+      <button id="dock-wall-parkour" class="tactile-btn px-3 py-2 rounded-2xl bg-gold-soft text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span>🧗 Climb Screen Walls</span>
+      </button>
+
+      <button id="dock-drop-treats" class="tactile-btn px-3 py-2 rounded-2xl bg-mint-soft text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span>🧋 Drop Boba &amp; Cake</span>
+      </button>
+
+      <button id="dock-ukulele" class="tactile-btn px-3 py-2 rounded-2xl bg-lilac text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span id="dock-uke-label">🎸 Ukulele Song</span>
+      </button>
+
+      <button id="dock-ohana-squad" class="tactile-btn px-3 py-2 rounded-2xl bg-white text-plum font-sans text-[11px] sm:text-xs font-extrabold flex items-center gap-1">
+        <span id="dock-squad-label">🐾 Ohana Squad (x3)</span>
+      </button>
+
+    </div>
+  </div>
+
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: FULL-SCREEN SUPER STITCH PHYSICS & BIRTHDAY ENGINE        -->
+  <!-- ===================================================================== -->
+  <script>
+    /**
+     * =====================================================================
+     * 1. WEB AUDIO SYNTHESIS ENGINE (CHIRPS, LASERS, CRUNCHES & UKULELE)
+     * =====================================================================
+     */
+    let audioCtx = null;
+    let soundEnabled = true;
+    let ukePlaying = false;
+    let ukeInterval = null;
+    let ukeStep = 0;
+
+    // Island Ukulele Happy Birthday Arpeggio
+    const UKULELE_MELODY = [
+      523.25, 659.25, 783.99, 1046.50,
+      587.33, 739.99, 880.00, 1174.66,
+      659.25, 783.99, 987.77, 1318.51,
+      523.25, 659.25, 783.99, 1046.50
+    ];
+
+    function ensureAudio() {
+      if (!soundEnabled) return false;
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return true;
+    }
+
+    function playPluck(freq, duration = 0.55, vol = 0.06, delay = 0) {
+      if (!ensureAudio()) return;
+      const now = audioCtx.currentTime + delay;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(vol, now + 0.015);
+      gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + duration + 0.03);
+    }
+
+    function playStitchChirp(pitchMultiplier = 1) {
+      if (!ensureAudio()) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(540 * pitchMultiplier, now);
+      osc.frequency.exponentialRampToValueAtTime(920 * pitchMultiplier, now + 0.08);
+      osc.frequency.exponentialRampToValueAtTime(680 * pitchMultiplier, now + 0.15);
+      osc.frequency.exponentialRampToValueAtTime(1120 * pitchMultiplier, now + 0.24);
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.linearRampToValueAtTime(0.075, now + 0.025);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.26);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.28);
+    }
+
+    function playLaserPew() {
+      if (!ensureAudio()) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(1250, now);
+      osc.frequency.exponentialRampToValueAtTime(220, now + 0.22);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.25);
+    }
+
+    function playHurricaneWhoosh() {
+      if (!ensureAudio()) return;
+      const bufferSize = audioCtx.sampleRate * 1.0;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = buffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(420, audioCtx.currentTime);
+      filter.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.45);
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.14, audioCtx.currentTime + 0.2);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 1.0);
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(audioCtx.destination);
+      noise.start();
+    }
+
+    document.getElementById('sound-toggle-btn').addEventListener('click', () => {
+      soundEnabled = !soundEnabled;
+      document.getElementById('sound-label').textContent = soundEnabled ? 'SFX: ON' : 'SFX: OFF';
+      if (!soundEnabled && ukePlaying) toggleUkuleleMode(false);
+    });
+
+
+    /**
+     * =====================================================================
+     * 2. FULL-SCREEN FX CANVAS (JETPACK RIBBON, PLASMA BEAMS, PAW PRINTS)
+     * =====================================================================
+     */
+    const fxCanvas = document.getElementById('stitch-fx-canvas');
+    const fxCtx = fxCanvas.getContext('2d');
+    let trailPoints = [];
+    let pawPrints = [];
+    let plasmaBeams = [];
+
+    function resizeFxCanvas() {
+      fxCanvas.width = window.innerWidth;
+      fxCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeFxCanvas);
+    resizeFxCanvas();
+
+    function spawnWallPawPrint(x, y, angleDeg) {
+      pawPrints.push({ x, y, angle: (angleDeg * Math.PI) / 180, alpha: 0.75 });
+      if (pawPrints.length > 26) pawPrints.shift();
+    }
+
+    function fireCosmicHeartPlasma(startX, startY, targetX, targetY) {
+      playLaserPew();
+      plasmaBeams.push({
+        x: startX,
+        y: startY,
+        tx: targetX,
+        ty: targetY,
+        progress: 0
+      });
+    }
+
+
+    /**
+     * =====================================================================
+     * 3. FULL-SCREEN FREE-ROAMING SUPER PURPLE STITCH ENGINE
+     * =====================================================================
+     */
+    const stitchEl = document.getElementById('stitch-overlay-actor');
+    const stitchRig = document.getElementById('stitch-rig');
+    const stitchSvg = document.getElementById('stitch-svg');
+    const speechTextEl = document.getElementById('stitch-speech-text');
+    const stateReadoutEl = document.getElementById('stitch-state-readout');
+    const joyScoreEl = document.getElementById('joy-score-counter');
+    const treatsEatenEl = document.getElementById('treats-eaten-badge');
+    const entitiesLayer = document.getElementById('world-entities-layer');
+
+    // Articulated SVG Sub-elements
+    const earLeft = document.getElementById('stitch-ear-left');
+    const earRight = document.getElementById('stitch-ear-right');
+    const armLeft = document.getElementById('stitch-arm-left');
+    const armRight = document.getElementById('stitch-arm-right');
+    const armMidLeft = document.getElementById('stitch-arm-mid-left');
+    const armMidRight = document.getElementById('stitch-arm-mid-right');
+    const legLeft = document.getElementById('stitch-leg-left');
+    const legRight = document.getElementById('stitch-leg-right');
+    const eyesOpen = document.getElementById('stitch-eyes-open');
+    const eyesHappy = document.getElementById('stitch-eyes-happy');
+    const eyePupils = document.getElementById('stitch-eye-pupils');
+    const mouthSmile = document.getElementById('stitch-mouth-smile');
+    const mouthOpen = document.getElementById('stitch-mouth-open');
+    const mouthPuff = document.getElementById('stitch-mouth-puff');
+
+    // Super 626 & Prop Layers
+    const layer626Halo = document.getElementById('stitch-626-halo');
+    const layer626Spines = document.getElementById('stitch-626-spines');
+    const layer626Arms = document.getElementById('stitch-626-extra-arms');
+    const layer626Antennae = document.getElementById('stitch-626-antennae');
+    const layerJetpack = document.getElementById('stitch-jetpack');
+    const layerUkulele = document.getElementById('stitch-ukulele-prop');
+
+    // Physics State
+    const STITCH_SIZE = 148;
+    const HALF_SIZE = 74;
+    let joyScore = 220;
+    let treatsEaten = 0;
+
+    const stitch = {
+      x: Math.min(window.innerWidth * 0.72, window.innerWidth - 110),
+      y: 220,
+      vx: 2.5,
+      vy: 0,
+      mode: 'roam', // 'roam' | 'dragged' | 'wall-climb' | 'rocket' | 'scripted'
+      wallSide: 'right', // 'left' | 'right' | 'ceiling'
+      facing: -1, // 1 = right, -1 = left
+      rotation: 0,
+      targetRotation: 0,
+      scaleX: 1,
+      scaleY: 1,
+      super626: false,
+      onGround: false,
+      walkCycle: 0,
+      rocketAngle: 0,
+      pawTimer: 0
+    };
+
+    let droppedTreats = [];
+    let ohanaMinis = [];
+    let ohanaActive = false;
+
+    function addJoyPoints(pts, x, y, label = `+${pts} JOY!`) {
+      joyScore += pts;
+      joyScoreEl.textContent = joyScore.toLocaleString();
+      const badge = document.createElement('div');
+      badge.className = 'score-pop fixed z-50 pointer-events-none px-3 py-1 rounded-full bg-gold border-2 border-plum text-plum font-display font-bold text-xs shadow-[0_3px_0_#2A1B4E]';
+      badge.style.left = `${x}px`;
+      badge.style.top = `${y}px`;
+      badge.textContent = label;
+      document.body.appendChild(badge);
+      setTimeout(() => badge.remove(), 1150);
+    }
+
+    function stitchSay(text, statusLabel = null) {
+      speechTextEl.textContent = text;
+      if (statusLabel) stateReadoutEl.textContent = statusLabel;
+    }
+
+    function setStitchExpression(face) {
+      eyesOpen.classList.toggle('hidden', face === 'happy');
+      eyesHappy.classList.toggle('hidden', face !== 'happy');
+      mouthSmile.classList.toggle('hidden', face !== 'normal');
+      mouthOpen.classList.toggle('hidden', face !== 'happy');
+      mouthPuff.classList.toggle('hidden', face !== 'puff');
+    }
+
+    // ---------------------------------------------------------------------
+    // POINTER DRAG, DANGLE & TOSS PHYSICS ON FULL-SCREEN STITCH
+    // ---------------------------------------------------------------------
+    let isDraggingStitch = false;
+    let dragPrevX = 0;
+    let dragPrevY = 0;
+
+    stitchEl.addEventListener('pointerdown', (e) => {
+      e.preventDefault();
+      isDraggingStitch = true;
+      stitch.mode = 'dragged';
+      stitch.targetRotation = 0;
+      dragPrevX = e.clientX;
+      dragPrevY = e.clientY;
+      stitchEl.setPointerCapture(e.pointerId);
+      playStitchChirp(1.12);
+      setStitchExpression('happy');
+      stitchSay("Wheee!! Toss me across the screen, Lily!", "Being Held by Lily!");
+    });
+
+    stitchEl.addEventListener('pointermove', (e) => {
+      if (!isDraggingStitch) return;
+      const dx = e.clientX - dragPrevX;
+      const dy = e.clientY - dragPrevY;
+      stitch.vx = dx * 0.85;
+      stitch.vy = dy * 0.85;
+      stitch.x = e.clientX;
+      stitch.y = e.clientY;
+      dragPrevX = e.clientX;
+      dragPrevY = e.clientY;
+    });
+
+    stitchEl.addEventListener('pointerup', (e) => {
+      if (!isDraggingStitch) return;
+      isDraggingStitch = false;
+      stitchEl.releasePointerCapture(e.pointerId);
+
+      // If barely moved, treat as a pet/pat!
+      if (Math.hypot(stitch.vx, stitch.vy) < 3.5) {
+        stitch.vy = -11;
+        stitch.vx = (Math.random() - 0.5) * 8;
+        addJoyPoints(22, stitch.x, stitch.y - 40, '+22 PATS! 💜');
+        stitchSay("Hehe! Best birthday ear pats ever, Lily!", "Happy & Bouncing");
+      } else {
+        // Clamp max throw speed
+        stitch.vx = Math.max(-24, Math.min(24, stitch.vx * 1.25));
+        stitch.vy = Math.max(-24, Math.min(24, stitch.vy * 1.25));
+        addJoyPoints(22, stitch.x, stitch.y - 40, 'SUPER TOSS! 🚀');
+        stitchSay("WOOHOO!! Flying across Lily's screen!!", "Airborne Parkour!");
+      }
+      stitch.mode = 'roam';
+      setTimeout(() => setStitchExpression('normal'), 1100);
+    });
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 1: SUPER EXPERIMENT 626 TRANSFORMATION (6 ARMS + PLASMA!)
+    // ---------------------------------------------------------------------
+    const btnDock626 = document.getElementById('dock-super-626');
+    function toggleSuper626Mode() {
+      stitch.super626 = !stitch.super626;
+      layer626Halo.classList.toggle('hidden', !stitch.super626);
+      layer626Spines.classList.toggle('hidden', !stitch.super626);
+      layer626Arms.classList.toggle('hidden', !stitch.super626);
+      layer626Antennae.classList.toggle('hidden', !stitch.super626);
+      stitchSvg.classList.toggle('super-626-glow', stitch.super626);
+      btnDock626.classList.toggle('dock-btn-active', stitch.super626);
+
+      if (stitch.super626) {
+        playStitchChirp(1.25);
+        stitch.vy = -13;
+        setStitchExpression('happy');
+        stitchSay("MEEGA NALA KWEESTA!! 6-Arm Super 626 Power for Lily!!", "Super 626 Cosmic Mode!");
+        // Fire 3 celebratory Cosmic Heart Plasma beams!
+        for (let i = 0; i < 3; i++) {
+          setTimeout(() => {
+            const tx = Math.random() * (window.innerWidth - 160) + 80;
+            const ty = Math.random() * (window.innerHeight - 200) + 80;
+            fireCosmicHeartPlasma(stitch.x, stitch.y, tx, ty);
+          }, i * 240);
+        }
+      } else {
+        playStitchChirp(0.95);
+        setStitchExpression('normal');
+        stitchSay("Back to cute fluffy Stitch mode!", "Fluffy Mode");
+      }
+    }
+    btnDock626.addEventListener('click', toggleSuper626Mode);
+
+    document.getElementById('btn-hero-plasma').addEventListener('click', () => {
+      if (!stitch.super626) toggleSuper626Mode();
+      else {
+        for (let i = 0; i < 4; i++) {
+          setTimeout(() => {
+            fireCosmicHeartPlasma(
+              stitch.x,
+              stitch.y,
+              Math.random() * (window.innerWidth - 120) + 60,
+              Math.random() * (window.innerHeight * 0.65) + 60
+            );
+          }, i * 180);
+        }
+        stitchSay("Pew pew!! Sending 22nd birthday love lasers to Lily!!", "Firing Heart Lasers!");
+      }
+    });
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 2: ROCKET ZOOMIES (JETPACK FIGURE-8 FLIGHT ACROSS SCREEN)
+    // ---------------------------------------------------------------------
+    const btnDockRocket = document.getElementById('dock-rocket-zoomies');
+    function toggleRocketZoomies() {
+      if (stitch.mode === 'rocket') {
+        stitch.mode = 'roam';
+        layerJetpack.classList.add('hidden');
+        btnDockRocket.classList.remove('dock-btn-active');
+        stitch.targetRotation = 0;
+        setStitchExpression('normal');
+        stitchSay("Jetpack landed! Ready for more birthday fun!", "Free-Roaming");
+      } else {
+        if (ukePlaying) toggleUkuleleMode(false);
+        stitch.mode = 'rocket';
+        stitch.rocketAngle = 0;
+        layerJetpack.classList.remove('hidden');
+        btnDockRocket.classList.add('dock-btn-active');
+        document.getElementById('dock-wall-parkour').classList.remove('dock-btn-active');
+        playStitchChirp(1.3);
+        setStitchExpression('happy');
+        stitchSay("TURBO JETPACK ON!! Zooming all over Lily's screen!!", "Rocket Jetpack Zoomies!");
+      }
+    }
+    btnDockRocket.addEventListener('click', toggleRocketZoomies);
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 3: WALL & CEILING SCREEN PARKOUR
+    // ---------------------------------------------------------------------
+    const btnDockWall = document.getElementById('dock-wall-parkour');
+    function triggerWallParkour() {
+      if (stitch.mode === 'wall-climb') {
+        stitch.mode = 'roam';
+        stitch.targetRotation = 0;
+        stitch.vy = -8;
+        btnDockWall.classList.remove('dock-btn-active');
+        stitchSay("Backflip off the ceiling! Ta-da, Lily!!", "Acrobatic Landing!");
+        return;
+      }
+      if (stitch.mode === 'rocket') toggleRocketZoomies();
+      if (ukePlaying) toggleUkuleleMode(false);
+
+      stitch.mode = 'wall-climb';
+      stitch.wallSide = stitch.x < window.innerWidth / 2 ? 'left' : 'right';
+      btnDockWall.classList.add('dock-btn-active');
+      playStitchChirp(1.18);
+      stitchSay("Spider-Stitch! Climbing up the walls of your screen, Lily!", "Climbing Browser Walls!");
+    }
+    btnDockWall.addEventListener('click', triggerWallParkour);
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 4: BOUNCY BOBA & BIRTHDAY CAKE TREAT DROPS
+    // ---------------------------------------------------------------------
+    const TREAT_TYPES = [
+      {
+        name: 'Taro Boba Tea',
+        svg: `<svg viewBox="0 0 48 48" class="w-11 h-11 drop-shadow"><rect x="14" y="16" width="20" height="26" rx="5" fill="#DDD6FE" stroke="#2A1B4E" stroke-width="2.5"/><path d="M12 16 H36" stroke="#EC4899" stroke-width="4" stroke-linecap="round"/><rect x="22" y="6" width="5" height="14" rx="2" fill="#7C3AED" stroke="#2A1B4E" stroke-width="2"/><circle cx="19" cy="36" r="2.5" fill="#2A1B4E"/><circle cx="25" cy="37" r="2.5" fill="#2A1B4E"/><circle cx="29" cy="35" r="2.5" fill="#2A1B4E"/></svg>`
+      },
+      {
+        name: 'Strawberry 22 Cake',
+        svg: `<svg viewBox="0 0 48 48" class="w-11 h-11 drop-shadow"><path d="M8 38 L40 38 L36 20 L12 24 Z" fill="#FCE7F3" stroke="#2A1B4E" stroke-width="2.5" stroke-linejoin="round"/><path d="M10 24 Q24 16 38 20" stroke="#EC4899" stroke-width="4" stroke-linecap="round"/><circle cx="24" cy="14" r="5" fill="#F43F5E" stroke="#2A1B4E" stroke-width="2"/></svg>`
+      },
+      {
+        name: 'Cosmic Galaxy Donut',
+        svg: `<svg viewBox="0 0 48 48" class="w-11 h-11 drop-shadow"><circle cx="24" cy="24" r="16" fill="#F59E0B" stroke="#2A1B4E" stroke-width="2.5"/><circle cx="24" cy="24" r="13" fill="#8B5CF6"/><circle cx="24" cy="24" r="5.5" fill="#FBF9FF" stroke="#2A1B4E" stroke-width="2.5"/></svg>`
+      }
+    ];
+
+    function spawnTreatAt(x, y) {
+      const t = TREAT_TYPES[Math.floor(Math.random() * TREAT_TYPES.length)];
+      const el = document.createElement('div');
+      el.className = 'absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 pointer-events-none';
+      el.innerHTML = t.svg;
+      entitiesLayer.appendChild(el);
+
+      droppedTreats.push({
+        x,
+        y,
+        vx: (Math.random() - 0.5) * 7,
+        vy: -4 - Math.random() * 4,
+        rot: 0,
+        el,
+        name: t.name
+      });
+    }
+
+    function rainBobaAndCake(count = 5) {
+      playStitchChirp(1.1);
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const rx = Math.random() * (window.innerWidth - 140) + 70;
+          spawnTreatAt(rx, 70);
+        }, i * 110);
+      }
+      stitchSay("OOOH!! Boba & Birthday Cake raining from the sky!!", "Chasing Birthday Treats!");
+    }
+
+    document.getElementById('dock-drop-treats').addEventListener('click', () => rainBobaAndCake(5));
+    document.getElementById('btn-hero-rain-treats').addEventListener('click', () => rainBobaAndCake(6));
+
+    // Double-Click Anywhere on the Page to Drop a Treat at Cursor!
+    window.addEventListener('dblclick', (e) => {
+      spawnTreatAt(e.clientX, e.clientY);
+      playPluck(783.99, 0.3, 0.05);
+      stitchSay("Snack spotted!! Coming right over, Lily!", "Sprinting for Snacks!");
+    });
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 5: UKULELE SERENADE
+    // ---------------------------------------------------------------------
+    const btnDockUke = document.getElementById('dock-ukulele');
+    function toggleUkuleleMode(forceState = null) {
+      const next = forceState !== null ? forceState : !ukePlaying;
+      ukePlaying = next;
+      layerUkulele.classList.toggle('hidden', !ukePlaying);
+      btnDockUke.classList.toggle('dock-btn-active', ukePlaying);
+      document.getElementById('dock-uke-label').textContent = ukePlaying ? '🎸 Stop Ukulele' : '🎸 Ukulele Song';
+
+      if (ukePlaying) {
+        if (stitch.mode === 'rocket') toggleRocketZoomies();
+        if (stitch.mode === 'wall-climb') triggerWallParkour();
+        ensureAudio();
+        setStitchExpression('happy');
+        stitchSay("Strumming an island birthday song for Lily's 22nd! 🎶", "Playing Ukulele Serenade");
+        if (ukeInterval) clearInterval(ukeInterval);
+        ukeInterval = setInterval(() => {
+          if (!ukePlaying) return;
+          const freq = UKULELE_MELODY[ukeStep % UKULELE_MELODY.length];
+          playPluck(freq, 0.6, 0.065);
+          if (ukeStep % 3 === 0) {
+            addJoyPoints(11, stitch.x + (Math.random() - 0.5) * 50, stitch.y - 50, '🎵 Aloha 22!');
+          }
+          ukeStep++;
+        }, 260);
+      } else {
+        setStitchExpression('normal');
+        if (ukeInterval) clearInterval(ukeInterval);
+      }
+    }
+    btnDockUke.addEventListener('click', () => toggleUkuleleMode());
+
+    // ---------------------------------------------------------------------
+    // SUPERPOWER 6: OHANA SQUAD (SUMMON 2 EXTRA MINI STITCH BUDDIES!)
+    // ---------------------------------------------------------------------
+    const btnDockSquad = document.getElementById('dock-ohana-squad');
+    function toggleOhanaSquad() {
+      ohanaActive = !ohanaActive;
+      btnDockSquad.classList.toggle('dock-btn-active', ohanaActive);
+
+      if (ohanaActive) {
+        playStitchChirp(1.35);
+        stitchSay("OHANA SQUAD ASSEMBLE!! 3x the Stitch party for Lily!!", "Ohana Squad Party (x3)!");
+        const colors = [
+          { main: '#EC4899', ear: '#FBCFE8', name: 'Angel-Pink' },
+          { main: '#A855F7', ear: '#E9D5FF', name: 'Lilac-Mini' }
+        ];
+        colors.forEach((c, idx) => {
+          const el = document.createElement('div');
+          el.className = 'fixed left-0 top-0 pointer-events-none z-40 -translate-x-1/2 -translate-y-1/2';
+          el.style.width = '78px';
+          el.style.height = '78px';
+          el.innerHTML = `
+            <svg viewBox="0 0 120 120" class="w-full h-full drop-shadow">
+              <path d="M40 52 C18 22, 2 24, 6 46 C8 56, 24 62, 38 58 Z" fill="${c.main}" stroke="#2A1B4E" stroke-width="3"/>
+              <path d="M80 52 C102 22, 118 24, 114 46 C112 56, 96 62, 82 58 Z" fill="${c.main}" stroke="#2A1B4E" stroke-width="3"/>
+              <ellipse cx="60" cy="84" rx="24" ry="22" fill="${c.main}" stroke="#2A1B4E" stroke-width="3"/>
+              <ellipse cx="60" cy="88" rx="15" ry="13" fill="${c.ear}"/>
+              <ellipse cx="60" cy="56" rx="28" ry="24" fill="${c.main}" stroke="#2A1B4E" stroke-width="3"/>
+              <circle cx="48" cy="54" r="6.5" fill="#1E1338"/>
+              <circle cx="49" cy="52" r="2.2" fill="#FFF"/>
+              <circle cx="72" cy="54" r="6.5" fill="#1E1338"/>
+              <circle cx="71" cy="52" r="2.2" fill="#FFF"/>
+              <ellipse cx="60" cy="60" rx="6" ry="4.5" fill="#3B0764"/>
+              <path d="M48 68 Q60 76 72 68" stroke="#2A1B4E" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          `;
+          entitiesLayer.appendChild(el);
+          ohanaMinis.push({
+            x: stitch.x + (idx === 0 ? -90 : 90),
+            y: stitch.y - 40,
+            vx: idx === 0 ? -4 : 4,
+            vy: -8,
+            el
+          });
+        });
+      } else {
+        ohanaMinis.forEach(m => m.el.remove());
+        ohanaMinis = [];
+        stitchSay("Mini squad took a nap! I'm still here for you, Lily!", "Free-Roaming");
+      }
+    }
+    btnDockSquad.addEventListener('click', toggleOhanaSquad);
+
+    // ---------------------------------------------------------------------
+    // WHISTLE FOR STITCH BUTTON (CALLS STITCH RIGHT TO HERO CARD)
+    // ---------------------------------------------------------------------
+    document.getElementById('btn-whistle-stitch').addEventListener('click', () => {
+      const heroCard = document.getElementById('hero-landing-card').getBoundingClientRect();
+      stitch.mode = 'roam';
+      stitch.targetRotation = 0;
+      stitch.x = heroCard.left + heroCard.width * 0.5;
+      stitch.y = Math.max(110, heroCard.top + 30);
+      stitch.vx = 0;
+      stitch.vy = -12;
+      playStitchChirp(1.25);
+      setStitchExpression('happy');
+      addJoyPoints(22, stitch.x, stitch.y - 40, 'REPORTING FOR DUTY! 🫡');
+      stitchSay("Right here, Lily!! Ready to celebrate your 22nd!!", "Center Stage Salute!");
+    });
+
+    // Cursor Eye Tracking
+    window.addEventListener('mousemove', (e) => {
+      const dx = Math.max(-4, Math.min(4, (e.clientX - stitch.x) / 65));
+      const dy = Math.max(-3, Math.min(3, (e.clientY - stitch.y) / 65));
+      eyePupils.style.transform = `translate(${dx}px, ${dy}px)`;
+    });
+
+    // ---------------------------------------------------------------------
+    // MASTER 60FPS PHYSICS, DOM CARD PLATFORMING & FX LOOP
+    // ---------------------------------------------------------------------
+    function getCardPlatforms() {
+      const cards = document.querySelectorAll('.tactile-card');
+      const platforms = [];
+      cards.forEach(c => {
+        const r = c.getBoundingClientRect();
+        // Only consider visible card tops inside the viewport
+        if (r.top > 90 && r.top < window.innerHeight - 90 && r.width > 200) {
+          platforms.push({
+            left: r.left + 30,
+            right: r.right - 30,
+            top: r.top
+          });
+        }
+      });
+      return platforms;
+    }
+
+    function masterPhysicsLoop() {
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      const floorY = H - 102; // Right above the floating superpower dock!
+      const platforms = getCardPlatforms();
+
+      // Clear FX Canvas
+      fxCtx.clearRect(0, 0, W, H);
+
+      // 1. Update & Draw Wall/Ceiling Paw Prints
+      for (let i = pawPrints.length - 1; i >= 0; i--) {
+        const p = pawPrints[i];
+        p.alpha -= 0.004;
+        if (p.alpha <= 0) {
+          pawPrints.splice(i, 1);
+          continue;
+        }
+        fxCtx.save();
+        fxCtx.translate(p.x, p.y);
+        fxCtx.rotate(p.angle);
+        fxCtx.fillStyle = `rgba(124, 58, 237, ${p.alpha})`;
+        fxCtx.beginPath();
+        fxCtx.arc(0, 4, 7, 0, Math.PI * 2);
+        fxCtx.arc(-7, -6, 3.2, 0, Math.PI * 2);
+        fxCtx.arc(-2, -9, 3.2, 0, Math.PI * 2);
+        fxCtx.arc(4, -9, 3.2, 0, Math.PI * 2);
+        fxCtx.arc(8, -5, 3.2, 0, Math.PI * 2);
+        fxCtx.fill();
+        fxCtx.restore();
+      }
+
+      // 2. Update & Draw Cosmic Heart Plasma Beams
+      for (let i = plasmaBeams.length - 1; i >= 0; i--) {
+        const b = plasmaBeams[i];
+        b.progress += 0.065;
+        const cx = b.x + (b.tx - b.x) * b.progress;
+        const cy = b.y + (b.ty - b.y) * b.progress;
+
+        fxCtx.save();
+        fxCtx.strokeStyle = '#EC4899';
+        fxCtx.lineWidth = 6;
+        fxCtx.shadowColor = '#8B5CF6';
+        fxCtx.shadowBlur = 14;
+        fxCtx.beginPath();
+        fxCtx.moveTo(b.x, b.y);
+        fxCtx.lineTo(cx, cy);
+        fxCtx.stroke();
+
+        fxCtx.fillStyle = '#FEF08A';
+        fxCtx.beginPath();
+        fxCtx.arc(cx, cy, 9, 0, Math.PI * 2);
+        fxCtx.fill();
+        fxCtx.restore();
+
+        if (b.progress >= 1) {
+          confetti({
+            particleCount: 24,
+            spread: 60,
+            origin: { x: b.tx / W, y: b.ty / H },
+            colors: ['#7C3AED', '#EC4899', '#F59E0B']
+          });
+          addJoyPoints(22, b.tx, b.ty, '💖 22nd LOVE BLAST!');
+          plasmaBeams.splice(i, 1);
+        }
+      }
+
+      // 3. Update Bouncy Dropped Treats (Boba, Cake, Donuts)
+      for (let i = droppedTreats.length - 1; i >= 0; i--) {
+        const t = droppedTreats[i];
+        t.vy += 0.42;
+        t.x += t.vx;
+        t.y += t.vy;
+        t.rot += t.vx * 2;
+
+        if (t.x < 30 || t.x > W - 30) t.vx *= -0.75;
+        if (t.y > floorY + 25) {
+          t.y = floorY + 25;
+          t.vy *= -0.58;
+          t.vx *= 0.92;
+        }
+        t.el.style.transform = `translate3d(${t.x}px, ${t.y}px, 0) rotate(${t.rot}deg)`;
+
+        // Check if Main Stitch eats the treat!
+        if (Math.hypot(stitch.x - t.x, stitch.y - t.y) < 68) {
+          t.el.remove();
+          droppedTreats.splice(i, 1);
+          treatsEaten++;
+          treatsEatenEl.textContent = treatsEaten;
+          playStitchChirp(1.2);
+          setStitchExpression('happy');
+          addJoyPoints(22, stitch.x, stitch.y - 45, `YUM! +22 (${t.name})`);
+          stitchSay(`Nom nom!! That ${t.name} was delicious, Lily!`, "Munching Birthday Treats!");
+          setTimeout(() => {
+            if (!ukePlaying) setStitchExpression('normal');
+          }, 800);
+        }
+      }
+
+      // 4. Update Ohana Squad Mini Stitch Buddies
+      ohanaMinis.forEach((m, idx) => {
+        m.vy += 0.48;
+        // Chase treats or follow main Stitch
+        const targetX = droppedTreats.length > 0 ? droppedTreats[0].x : stitch.x + (idx === 0 ? -85 : 85);
+        m.vx += (targetX - m.x) * 0.015;
+        m.vx *= 0.9;
+        m.x += m.vx;
+        m.y += m.vy;
+
+        if (m.y > floorY + 18) {
+          m.y = floorY + 18;
+          m.vy = -6 - Math.random() * 4;
+        }
+        const flip = m.vx >= 0 ? -1 : 1;
+        m.el.style.transform = `translate3d(${m.x}px, ${m.y}px, 0) scaleX(${flip})`;
+      });
+
+      // 5. Update Main Super Stitch Based on Active Mode
+      if (stitch.mode === 'dragged') {
+        stitch.walkCycle += 0.35;
+        stitch.scaleX = 0.94;
+        stitch.scaleY = 1.07;
+      } else if (stitch.mode === 'rocket') {
+        // High-Speed Figure-8 Rocket Flight across the entire screen!
+        stitch.rocketAngle += 0.038;
+        const nextX = W * 0.5 + Math.sin(stitch.rocketAngle) * (W * 0.38);
+        const nextY = H * 0.46 + Math.sin(stitch.rocketAngle * 2) * (H * 0.28);
+        stitch.vx = nextX - stitch.x;
+        stitch.vy = nextY - stitch.y;
+        stitch.x = nextX;
+        stitch.y = nextY;
+        stitch.facing = stitch.vx >= 0 ? -1 : 1;
+        stitch.targetRotation = Math.atan2(stitch.vy, Math.abs(stitch.vx)) * (180 / Math.PI) * 0.45;
+
+        // Add point to Jetpack Ribbon Trail
+        trailPoints.push({ x: stitch.x, y: stitch.y + 15, alpha: 1 });
+        if (trailPoints.length > 35) trailPoints.shift();
+      } else if (stitch.mode === 'wall-climb') {
+        // Spider-Stitch Climbing the Browser Walls & Ceiling!
+        stitch.walkCycle += 0.32;
+        stitch.pawTimer++;
+
+        if (stitch.wallSide === 'right') {
+          stitch.x += (W - 48 - stitch.x) * 0.2;
+          stitch.y -= 4.2;
+          stitch.targetRotation = -90;
+          if (stitch.pawTimer % 11 === 0) spawnWallPawPrint(W - 22, stitch.y, -90);
+          if (stitch.y < 68) stitch.wallSide = 'ceiling';
+        } else if (stitch.wallSide === 'ceiling') {
+          stitch.y += (54 - stitch.y) * 0.2;
+          stitch.x -= 4.5;
+          stitch.targetRotation = 180;
+          if (stitch.pawTimer % 11 === 0) spawnWallPawPrint(stitch.x, 26, 180);
+          if (stitch.x < 68) stitch.wallSide = 'left';
+        } else if (stitch.wallSide === 'left') {
+          stitch.x += (48 - stitch.x) * 0.2;
+          stitch.y += 4.5;
+          stitch.targetRotation = 90;
+          if (stitch.pawTimer % 11 === 0) spawnWallPawPrint(22, stitch.y, 90);
+          if (stitch.y > floorY - 30) {
+            stitch.mode = 'roam';
+            stitch.targetRotation = 0;
+            stitch.vx = 7;
+            stitch.vy = -10;
+            btnDockWall.classList.remove('dock-btn-active');
+            stitchSay("Completed full screen loop! Happy 22nd, Lily!", "Parkour Champion!");
+          }
+        }
+      } else if (stitch.mode === 'roam') {
+        // Free-Roaming Gravity + Card Top Platforming + Treat Chasing
+        stitch.targetRotation = 0;
+        stitch.vy += 0.55; // Gravity
+
+        // If there are dropped treats, sprint & leap toward the nearest treat!
+        if (droppedTreats.length > 0 && !ukePlaying) {
+          const target = droppedTreats[0];
+          const dx = target.x - stitch.x;
+          stitch.vx += Math.sign(dx) * 0.65;
+          stitch.vx = Math.max(-9, Math.min(9, stitch.vx));
+          if (stitch.onGround && target.y < stitch.y - 60 && Math.abs(dx) < 180) {
+            stitch.vy = -13.5;
+            stitch.onGround = false;
+          }
+        } else if (ukePlaying) {
+          stitch.vx *= 0.8;
+        } else {
+          // Autonomous playful roaming & spontaneous hops
+          if (Math.abs(stitch.vx) < 1.8) {
+            stitch.vx = (stitch.facing === -1 ? 2.4 : -2.4);
+          }
+          if (stitch.onGround && Math.random() < 0.012) {
+            stitch.vy = -12.5;
+            stitch.onGround = false;
+            stitch.scaleX = 0.86;
+            stitch.scaleY = 1.16;
+          }
+        }
+
+        const prevY = stitch.y;
+        stitch.x += stitch.vx;
+        stitch.y += stitch.vy;
+        stitch.onGround = false;
+
+        // Bounce off Left & Right Browser Edges
+        if (stitch.x < 56) {
+          stitch.x = 56;
+          stitch.vx = Math.abs(stitch.vx) * 0.9;
+        } else if (stitch.x > W - 56) {
+          stitch.x = W - 56;
+          stitch.vx = -Math.abs(stitch.vx) * 0.9;
+        }
+
+        // Check Landing on Visible `.tactile-card` Top Edges!
+        if (stitch.vy >= 0) {
+          for (let i = 0; i < platforms.length; i++) {
+            const p = platforms[i];
+            const footPrev = prevY + 56;
+            const footNow = stitch.y + 56;
+            if (stitch.x >= p.left && stitch.x <= p.right && footPrev <= p.top + 8 && footNow >= p.top) {
+              stitch.y = p.top - 56;
+              stitch.vy = 0;
+              stitch.onGround = true;
+              break;
+            }
+          }
+        }
+
+        // Floor Collision
+        if (stitch.y >= floorY) {
+          if (stitch.vy > 8) {
+            stitch.scaleX = 1.18;
+            stitch.scaleY = 0.84;
+          }
+          stitch.y = floorY;
+          stitch.vy = 0;
+          stitch.onGround = true;
+          stitch.vx *= 0.96;
+        }
+
+        if (Math.abs(stitch.vx) > 0.35) {
+          stitch.facing = stitch.vx >= 0 ? -1 : 1; // -1 flips SVG to face right
+          stitch.walkCycle += Math.abs(stitch.vx) * 0.085;
+        }
+      }
+
+      // Draw Jetpack Rainbow Trail if points exist
+      if (trailPoints.length > 1) {
+        for (let i = 1; i < trailPoints.length; i++) {
+          const p0 = trailPoints[i - 1];
+          const p1 = trailPoints[i];
+          p1.alpha -= 0.025;
+          fxCtx.save();
+          fxCtx.strokeStyle = i % 2 === 0 ? `rgba(139, 92, 246, ${Math.max(0, p1.alpha)})` : `rgba(236, 72, 153, ${Math.max(0, p1.alpha)})`;
+          fxCtx.lineWidth = (i / trailPoints.length) * 14;
+          fxCtx.lineCap = 'round';
+          fxCtx.beginPath();
+          fxCtx.moveTo(p0.x, p0.y);
+          fxCtx.lineTo(p1.x, p1.y);
+          fxCtx.stroke();
+          fxCtx.restore();
+        }
+        trailPoints = trailPoints.filter(p => p.alpha > 0);
+      }
+
+      // Smoothly interpolate squash/stretch & rotation
+      stitch.scaleX += (1 - stitch.scaleX) * 0.18;
+      stitch.scaleY += (1 - stitch.scaleY) * 0.18;
+      stitch.rotation += (stitch.targetRotation - stitch.rotation) * 0.22;
+
+      // Limb & Ear Articulation Physics
+      const earFlop = Math.max(-22, Math.min(22, stitch.vy * 1.4)) + Math.sin(stitch.walkCycle) * 8;
+      const legSwing = Math.sin(stitch.walkCycle * 1.5) * 20;
+      const armWave = ukePlaying ? Math.sin(Date.now() * 0.025) * 24 : Math.cos(stitch.walkCycle * 1.5) * 16;
+
+      earLeft.style.transform = `rotate(${-earFlop}deg)`;
+      earRight.style.transform = `rotate(${earFlop}deg)`;
+      legLeft.style.transform = `rotate(${legSwing}deg)`;
+      legRight.style.transform = `rotate(${-legSwing}deg)`;
+      armLeft.style.transform = `rotate(${armWave}deg)`;
+      armRight.style.transform = `rotate(${-armWave}deg)`;
+
+      if (stitch.super626) {
+        const midWave = Math.sin(Date.now() * 0.012) * 22;
+        armMidLeft.style.transform = `rotate(${midWave}deg)`;
+        armMidRight.style.transform = `rotate(${-midWave}deg)`;
+      }
+
+      // Apply Final Transform to Full-Screen Stitch Overlay
+      stitchEl.style.transform = `translate3d(${stitch.x - HALF_SIZE}px, ${stitch.y - HALF_SIZE}px, 0)`;
+      stitchRig.style.transform = `rotate(${stitch.rotation}deg) scaleX(${stitch.facing * stitch.scaleX}) scaleY(${stitch.scaleY})`;
+
+      requestAnimationFrame(masterPhysicsLoop);
+    }
+
+
+    /**
+     * =====================================================================
+     * 4. THE 22-CANDLE CAKE + STITCH'S COSMIC HURRICANE BREATH
+     * =====================================================================
+     */
+    const tier1Container = document.getElementById('cake-tier-1');
+    const tier2Container = document.getElementById('cake-tier-2');
+    const tier3Container = document.getElementById('cake-tier-3');
+    const candlesRemainingLabel = document.getElementById('candles-remaining-label');
+    const candleDot = document.getElementById('candle-dot');
+    const cakeWishBanner = document.getElementById('cake-wish-banner');
+    const relightCandlesBtn = document.getElementById('relight-candles-btn');
+    const stitchHurricaneBtn = document.getElementById('stitch-hurricane-btn');
+    const stitchCycloneGust = document.getElementById('stitch-cyclone-gust');
+
+    let litCount = 22;
+    let candleElements = [];
+
+    function buildSingleCandle(num) {
+      const div = document.createElement('div');
+      div.className = 'flex flex-col items-center cursor-pointer select-none group';
+      div.dataset.lit = 'true';
+      const stripe = num % 2 === 0 ? '#7C3AED' : '#EC4899';
+
+      div.innerHTML = `
+        <div class="relative h-7 flex items-end justify-center">
+          <div class="smoke-dot hidden w-2.5 h-2.5 rounded-full bg-lilac-border absolute -top-2"></div>
+          <svg class="flame-svg w-4 h-6" viewBox="0 0 20 32" fill="none">
+            <path d="M10 2C10 2 18 12 18 21C18 26 14.5 30 10 30C5.5 30 2 26 2 21C2 12 10 2 10 2Z" fill="#F59E0B"/>
+            <path d="M10 9C10 9 14.5 16 14.5 22C14.5 25 12.5 27.5 10 27.5C7.5 27.5 5.5 25 5.5 22C5.5 16 10 9 10 9Z" fill="#FEF08A"/>
+          </svg>
+        </div>
+        <div class="w-[2px] h-1.5 bg-plum"></div>
+        <div class="w-3.5 sm:w-4 h-10 sm:h-12 rounded-t-md bg-white border-2 border-plum flex flex-col justify-between items-center py-1 overflow-hidden shadow-sm">
+          <div class="w-full h-1" style="background:${stripe}"></div>
+          <span class="font-sans text-[8px] font-extrabold text-plum">${num}</span>
+          <div class="w-full h-1" style="background:${stripe}"></div>
+        </div>
+      `;
+
+      div.addEventListener('click', () => extinguishCandle(div));
+      div.addEventListener('mouseenter', (e) => {
+        if (e.buttons === 1 || Math.abs(e.movementX) > 3) extinguishCandle(div);
+      });
+      return div;
+    }
+
+    function init22Candles() {
+      tier1Container.innerHTML = '';
+      tier2Container.innerHTML = '';
+      tier3Container.innerHTML = '';
+      candleElements = [];
+      litCount = 22;
+      updateCandleStatus();
+
+      for (let i = 1; i <= 22; i++) {
+        const el = buildSingleCandle(i);
+        candleElements.push(el);
+        if (i <= 6) tier1Container.appendChild(el);
+        else if (i <= 14) tier2Container.appendChild(el);
+        else tier3Container.appendChild(el);
+      }
+    }
+
+    function extinguishCandle(el) {
+      if (el.dataset.lit !== 'true') return;
+      el.dataset.lit = 'false';
+      el.querySelector('.flame-svg').classList.add('flame-blown');
+      const smoke = el.querySelector('.smoke-dot');
+      smoke.classList.remove('hidden');
+      smoke.classList.add('smoke-active');
+
+      playPluck(480 + (22 - litCount) * 28, 0.35, 0.045);
+      litCount = Math.max(0, litCount - 1);
+      updateCandleStatus();
+
+      if (litCount === 0) triggerAllCandlesOutCelebration();
+    }
+
+    function updateCandleStatus() {
+      candlesRemainingLabel.textContent = `${litCount} of 22 Candles Lit`;
+      if (litCount === 0) {
+        candleDot.classList.remove('animate-ping', 'bg-gold');
+        candleDot.classList.add('bg-mint');
+      } else {
+        candleDot.classList.add('animate-ping', 'bg-gold');
+        candleDot.classList.remove('bg-mint');
+      }
+    }
+
+    function triggerAllCandlesOutCelebration() {
+      cakeWishBanner.classList.remove('hidden');
+      relightCandlesBtn.classList.remove('hidden');
+      addJoyPoints(220, window.innerWidth * 0.5, window.innerHeight * 0.45, '🎂 +220 WISH UNLOCKED!');
+
+      [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((n, idx) => {
+        playPluck(n, 1.1, 0.08, idx * 0.09);
+      });
+
+      confetti({
+        particleCount: 110,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#7C3AED', '#EC4899', '#F59E0B', '#10B981']
+      });
+
+      stitchSay("YAY!! All 22 candles out! Happy 22nd Birthday, Lily!!", "Celebrating Lily's Wish!");
+    }
+
+    // UNLEASH STITCH'S COSMIC HURRICANE BREATH! (Physically leaps Stitch next to the Cake!)
+    stitchHurricaneBtn.addEventListener('click', () => {
+      const cakeRect = document.getElementById('cake-stage-box').getBoundingClientRect();
+      stitch.mode = 'roam';
+      stitch.targetRotation = 0;
+      stitch.x = Math.max(85, cakeRect.left + 40);
+      stitch.y = Math.max(120, Math.min(window.innerHeight - 140, cakeRect.top + 90));
+      stitch.vx = 0;
+      stitch.vy = -6;
+      stitch.facing = -1; // Face right toward the cake
+
+      setStitchExpression('puff');
+      stitchSay("PUFFING UP COSMIC HURRICANE BREATH FOR LILY'S 22 CANDLES!!", "Cosmic Hurricane Breath!");
+      playHurricaneWhoosh();
+
+      stitchCycloneGust.classList.remove('hidden');
+      stitchCycloneGust.classList.add('cyclone-active');
+
+      const litList = candleElements.filter(c => c.dataset.lit === 'true');
+      litList.forEach((c, idx) => {
+        setTimeout(() => extinguishCandle(c), idx * 42);
+      });
+
+      setTimeout(() => {
+        stitchCycloneGust.classList.add('hidden');
+        stitchCycloneGust.classList.remove('cyclone-active');
+        setStitchExpression('happy');
+        setTimeout(() => setStitchExpression('normal'), 1400);
+      }, 1200);
+    });
+
+    relightCandlesBtn.addEventListener('click', () => {
+      cakeWishBanner.classList.add('hidden');
+      relightCandlesBtn.classList.add('hidden');
+      init22Candles();
+    });
+
+    // Real Microphone Blow Sensor
+    let micListening = false;
+    const micBlowBtn = document.getElementById('mic-blow-btn');
+    const micBlowLabel = document.getElementById('mic-blow-label');
+
+    micBlowBtn.addEventListener('click', async () => {
+      if (micListening) return;
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        ensureAudio();
+        const src = audioCtx.createMediaStreamSource(stream);
+        const analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 256;
+        src.connect(analyser);
+        micListening = true;
+        micBlowLabel.textContent = '🌬️ Blow Now!';
+        const freqData = new Uint8Array(analyser.frequencyBinCount);
+
+        function detectMicBreath() {
+          if (!micListening) return;
+          analyser.getByteFrequencyData(freqData);
+          let sum = 0;
+          for (let i = 0; i < 28; i++) sum += freqData[i];
+          const remaining = candleElements.filter(c => c.dataset.lit === 'true');
+          if (sum / 28 > 42 && remaining.length > 0) {
+            extinguishCandle(remaining[Math.floor(Math.random() * remaining.length)]);
+          }
+          if (litCount > 0) requestAnimationFrame(detectMicBreath);
+          else micBlowLabel.textContent = '🎉 All Blown Out!';
+        }
+        detectMicBreath();
+      } catch (err) {
+        micBlowLabel.textContent = 'Use Stitch Button!';
+      }
+    });
+
+    init22Candles();
+
+
+    /**
+     * =====================================================================
+     * 5. "22 REASONS LILY IS THE BEST" DECK + LIVE STITCH COMMENTARY
+     * =====================================================================
+     */
+    const REASONS_FOR_LILY = [
+      { title: "Your laugh makes the whole room lighter", desc: "The second you start laughing, everyone around you forgets what they were worried about. It is genuinely the best sound.", stitchNote: "Lily's laugh = 100/10 galaxy rating!!" },
+      { title: "People feel instantly comfortable around you", desc: "You have zero pretension and the warmest energy—everyone can just be 100% themselves with you.", stitchNote: "Even chaotic aliens feel right at home with Lily!" },
+      { title: "Born on the 7th of November", desc: "Right in the middle of cozy autumn, bringing pure golden sunshine when the days get chilly.", stitchNote: "November 7 is officially a galactic holiday!" },
+      { title: "Your effortless sense of style", desc: "Whether you put together a full outfit or keep it super simple, you always look amazing.", stitchNote: "22 and serving iconic looks every day!" },
+      { title: "How genuinely you listen", desc: "You actually remember the tiny stories people tell you weeks later, and that makes everyone feel so valued.", stitchNote: "Big ears like mine, biggest heart like yours!" },
+      { title: "Your quick, dry humor", desc: "One look or one quiet side-comment from you can make a whole group burst out laughing.", stitchNote: "Hehe! Lily is effortlessly hilarious!" },
+      { title: "You suit your name so well", desc: "Like a fresh blooming Lily, you bring brightness and calm everywhere you go.", stitchNote: "Prettiest flower in the whole universe!" },
+      { title: "How kind you are when nobody is watching", desc: "You do thoughtful things simply because you have a genuinely good heart, never for attention.", stitchNote: "Pure gold heart! Approved by Experiment 626!" },
+      { title: "You turn normal errands into fun memories", desc: "Even grabbing coffee or walking down the street is ten times more fun when Lily is there.", stitchNote: "Let's go get birthday boba right now!!" },
+      { title: "Your taste in music & little aesthetics", desc: "Everything you share—songs, photos, cozy spots—always has that unmistakable Lily magic.", stitchNote: "Lily's playlist > everything else!" },
+      { title: "Your quiet strength", desc: "When things get hectic, you handle them with so much grace and keep moving forward.", stitchNote: "Tougher than a cosmic asteroid!!" },
+      { title: "How wholeheartedly you cheer for your friends", desc: "When something good happens to someone you care about, you celebrate like it happened to you.", stitchNote: "And today the whole world cheers for YOU!" },
+      { title: "Your eyes light up when you talk about things you love", desc: "Seeing you excited and happy about something is genuinely contagious.", stitchNote: "Never stop shining, Lily!!" },
+      { title: "You never fake your energy", desc: "When you hug someone or give a compliment, people know you mean every word of it.", stitchNote: "100% real, 100% iconic!" },
+      { title: "You make tough days feel manageable", desc: "Five minutes of talking to you can reset the whole mood of a stressful week.", stitchNote: "Instant mood booster in human form!" },
+      { title: "Your curiosity about the world", desc: "You notice pretty skies, cute animals, and funny details that everyone else walks right past.", stitchNote: "Especially cute purple space creatures!!" },
+      { title: "How much you've grown by 22", desc: "Stepping into 22 with so much kindness, smarts, and confidence is inspiring to watch.", stitchNote: "Level 22 looks SO good on you!" },
+      { title: "You're the person everyone hopes is at the party", desc: "Any gathering is immediately better the moment Lily walks through the door.", stitchNote: "The VIP of every room!" },
+      { title: "Your mix of sweetness and sass", desc: "Kindest heart in the room, combined with the funniest comebacks when needed.", stitchNote: "Sweet + sassy = unbeatable combo!" },
+      { title: "Even Super Purple Stitch is obsessed with you", desc: "She traveled across the galaxy just to climb your screen and help blow out your 22 candles today!", stitchNote: "Meega loves Lily 10,000%!!" },
+      { title: "There is literally only one Lily", desc: "Out of billions of people on Earth, nobody else has your exact mix of warmth, humor, and charm.", stitchNote: "1 of 1! Completely irreplaceable!" },
+      { title: "Your best year ever starts right now!", desc: "Happy 22nd Birthday, Lily! May this chapter bring you the biggest smiles of your life.", stitchNote: "HAPPY 22ND BIRTHDAY LILY!! 🎉💜" }
+    ];
+
+    let reasonIdx = 0;
+    const reasonNumPill = document.getElementById('reason-num-pill');
+    const reasonCardTitle = document.getElementById('reason-card-title');
+    const reasonCardDesc = document.getElementById('reason-card-desc');
+    const reasonDotsWrap = document.getElementById('reason-dots-wrap');
+    const reasonsStackContainer = document.getElementById('reasons-stack-container');
+    const reasonsGridContainer = document.getElementById('reasons-grid-container');
+    const viewStackBtn = document.getElementById('view-stack-btn');
+    const viewGridBtn = document.getElementById('view-grid-btn');
+
+    function renderReasonCard(index, withStitchReaction = false) {
+      reasonIdx = (index + REASONS_FOR_LILY.length) % REASONS_FOR_LILY.length;
+      const item = REASONS_FOR_LILY[reasonIdx];
+      const numStr = String(reasonIdx + 1).padStart(2, '0');
+      reasonNumPill.textContent = `Reason #${numStr} of 22`;
+      reasonCardTitle.textContent = item.title;
+      reasonCardDesc.textContent = item.desc;
+      renderReasonDots();
+
+      if (withStitchReaction) {
+        stitch.vy = -8;
+        stitchSay(`#${numStr}: ${item.stitchNote}`, `Reading Reason #${numStr}`);
+      }
+    }
+
+    function renderReasonDots() {
+      reasonDotsWrap.innerHTML = '';
+      REASONS_FOR_LILY.forEach((_, i) => {
+        const btn = document.createElement('button');
+        btn.className = `w-7 h-7 rounded-lg font-sans text-[11px] font-extrabold border border-plum transition-all ${
+          i === reasonIdx
+            ? 'bg-stitch text-white scale-110 shadow-[0_2px_0_#2A1B4E]'
+            : 'bg-lilac text-plum hover:bg-white'
+        }`;
+        btn.textContent = i + 1;
+        btn.addEventListener('click', () => {
+          playPluck(587.33, 0.25, 0.04);
+          renderReasonCard(i, true);
+        });
+        reasonDotsWrap.appendChild(btn);
+      });
+    }
+
+    function populateAll22Grid() {
+      reasonsGridContainer.innerHTML = '';
+      REASONS_FOR_LILY.forEach((item, i) => {
+        const card = document.createElement('div');
+        card.className = 'tactile-card rounded-3xl p-6 space-y-2.5';
+        card.innerHTML = `
+          <div class="flex items-center justify-between">
+            <span class="inline-block px-3 py-1 rounded-full bg-lilac border border-plum text-stitch font-sans text-xs font-extrabold">
+              #${String(i + 1).padStart(2, '0')}
+            </span>
+            <span class="font-hand text-base text-berry font-bold">${item.stitchNote}</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-plum">${item.title}</h3>
+          <p class="font-sans text-sm text-muted font-semibold leading-relaxed">${item.desc}</p>
+        `;
+        reasonsGridContainer.appendChild(card);
+      });
+    }
+
+    document.getElementById('reason-prev-btn').addEventListener('click', () => {
+      playPluck(523.25, 0.25, 0.04);
+      renderReasonCard(reasonIdx - 1, true);
+    });
+    document.getElementById('reason-next-btn').addEventListener('click', () => {
+      playPluck(659.25, 0.25, 0.04);
+      renderReasonCard(reasonIdx + 1, true);
+    });
+    document.getElementById('reason-random-btn').addEventListener('click', () => {
+      playStitchChirp(1.15);
+      renderReasonCard(Math.floor(Math.random() * REASONS_FOR_LILY.length), true);
+    });
+
+    viewStackBtn.addEventListener('click', () => {
+      reasonsStackContainer.classList.remove('hidden');
+      reasonsGridContainer.classList.add('hidden');
+      reasonsGridContainer.classList.remove('grid');
+      viewStackBtn.className = 'px-4 py-2 rounded-xl bg-stitch text-white font-sans text-xs font-extrabold transition-all';
+      viewGridBtn.className = 'px-4 py-2 rounded-xl text-plum hover:bg-white font-sans text-xs font-extrabold transition-all';
+    });
+
+    viewGridBtn.addEventListener('click', () => {
+      reasonsStackContainer.classList.add('hidden');
+      reasonsGridContainer.classList.remove('hidden');
+      reasonsGridContainer.classList.add('grid');
+      viewGridBtn.className = 'px-4 py-2 rounded-xl bg-stitch text-white font-sans text-xs font-extrabold transition-all';
+      viewStackBtn.className = 'px-4 py-2 rounded-xl text-plum hover:bg-white font-sans text-xs font-extrabold transition-all';
+    });
+
+    renderReasonCard(0, false);
+    populateAll22Grid();
+
+
+    /**
+     * =====================================================================
+     * 6. POSTCARD PAW STAMP + LUCKY 22ND YEAR FORTUNE CAPSULE DISPENSER
+     * =====================================================================
+     */
+    const stampBtn = document.getElementById('stamp-postcard-btn');
+    const pawStamp = document.getElementById('stitch-paw-stamp');
+    const stampPlaceholder = document.getElementById('stamp-placeholder-text');
+    const pawStampBox = document.getElementById('paw-stamp-box');
+
+    stampBtn.addEventListener('click', () => {
+      const boxRect = pawStampBox.getBoundingClientRect();
+      // Summon Stitch directly onto the stamp box!
+      stitch.mode = 'roam';
+      stitch.targetRotation = 0;
+      stitch.x = boxRect.left + boxRect.width / 2;
+      stitch.y = Math.max(90, Math.min(window.innerHeight - 130, boxRect.top + 30));
+      stitch.vy = -12;
+
+      playStitchChirp(1.25);
+      stampPlaceholder.classList.add('hidden');
+      pawStamp.classList.remove('hidden', 'stamp-reveal');
+      void pawStamp.offsetWidth;
+      pawStamp.classList.add('stamp-reveal');
+
+      addJoyPoints(50, stitch.x, stitch.y - 40, '🐾 ROYAL PAW STAMPED!');
+      stitchSay("STAMPED!! Official Ohana Approval for Lily's 22nd Year!!", "Postcard Stamped!");
+
+      confetti({
+        particleCount: 55,
+        spread: 70,
+        origin: { y: 0.75 },
+        colors: ['#7C3AED', '#EC4899', '#F59E0B']
+      });
+      stampBtn.textContent = '🐾 Stamped by Super Stitch!';
+    });
+
+    // Lucky 22nd Year Fortune Capsules
+    const LUCKY_22_FORTUNES = [
+      "🌟 Chapter 22 Prophecy: An unexpected spontaneous trip this year will become one of your favorite memories ever!",
+      "🧋 Chapter 22 Prophecy: Unlimited sweet treats, late-night laughs until your stomach hurts, and zero unnecessary stress!",
+      "💜 Chapter 22 Prophecy: Something you have been quietly wishing for is going to fall into place effortlessly this year!",
+      "🌺 Chapter 22 Prophecy: Stitch predicts 365 days of good hair days, golden-hour skies, and people who adore you!",
+      "🚀 Chapter 22 Prophecy: Your 22nd year will bring an exciting new adventure that makes you proud of how far you've come!",
+      "🎶 Chapter 22 Prophecy: Concerts, cozy rainy mornings, and surrounded by friends who celebrate you every single day!"
+    ];
+    let fortuneIndex = 0;
+    document.getElementById('btn-pull-fortune').addEventListener('click', () => {
+      playStitchChirp(1.18);
+      fortuneIndex = (fortuneIndex + 1) % LUCKY_22_FORTUNES.length;
+      document.getElementById('fortune-output-text').textContent = LUCKY_22_FORTUNES[fortuneIndex];
+      stitch.vy = -10;
+      addJoyPoints(22, stitch.x, stitch.y - 40, '🔮 +22 LUCKY FORTUNE!');
+      stitchSay("Ooh!! That's a super lucky 22nd year fortune for you, Lily!", "Fortune Teller Stitch");
+    });
+
+    // Live Precision Ticker Since Nov 7, 2004
+    const birthTimestamp = new Date('2004-11-07T00:00:00').getTime();
+    function updateLiveClock() {
+      const diff = Math.max(0, Date.now() - birthTimestamp);
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor(totalSeconds / 3600);
+      const mins = Math.floor((totalSeconds % 3600) / 60);
+      const secs = totalSeconds % 60;
+
+      document.getElementById('live-days').textContent = days.toLocaleString();
+      document.getElementById('live-hours').textContent = hours.toLocaleString();
+      document.getElementById('live-mins').textContent = String(mins).padStart(2, '0');
+      document.getElementById('live-secs').textContent = String(secs).padStart(2, '0');
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+
+    window.onload = function () {
+      masterPhysicsLoop();
+    };
+  </script>
+</body>
+</html>
